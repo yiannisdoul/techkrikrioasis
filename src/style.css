@@ -1,0 +1,52 @@
+@import "tailwindcss";
+
+/* Vibrate hover effect */
+.card-hover:hover {
+  animation: vibrate 0.3s linear;
+}
+
+@keyframes vibrate {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Typewriter effect */
+@keyframes typewriter-words {
+  0%   { content: ""; }
+  20%  { content: "TK²O your"; }
+  40%  { content: "TK²O your limits."; }
+  60%  { content: "TK²O your limits. Outthink."; }
+  80%  { content: "TK²O your limits. Outthink. Outbuild."; }
+  100% { content: "TK²O your limits. Outthink. Outbuild. Outperform."; }
+}
+
+.typewriter::after {
+  content: "";
+  animation: typewriter-words 6s steps(5, end) forwards;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: bottom;
+  padding-left: 0.25rem;
+}
+
+.typing-cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .typing-cursor::after {
+    font-size: 1rem;
+    line-height: 1;
+  }
+}
