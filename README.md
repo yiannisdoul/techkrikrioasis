@@ -76,13 +76,13 @@ src/
 💼 Skills Demonstrated
 This project demonstrates real-world proficiency in:
 
-✅ Modern Vue 3 composition API
-✅ TypeScript structure and type-safe components
-✅ TailwindCSS + responsive mobile-first design
-✅ Scroll-based UX animation and user engagement
-✅ Component-driven architecture for frontend scalability
-✅ GitHub documentation, commit hygiene, and project planning
-✅ Icon + asset generation using vector illustration tools
+✅ Modern Vue 3 composition API  
+✅ TypeScript structure and type-safe components  
+✅ TailwindCSS + responsive mobile-first design  
+✅ Scroll-based UX animation and user engagement  
+✅ Component-driven architecture for frontend scalability  
+✅ GitHub documentation, commit hygiene, and project planning  
+✅ Icon + asset generation using vector illustration tools  
 
 ---
 
