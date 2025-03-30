@@ -70,7 +70,7 @@ src/
 ├── views/          # Page-level views (About, Services, etc.)
 ├── style.css       # Global Tailwind + custom styles
 ├── main.ts         # Vite app entry point
-
+```
 ---
 
 💼 Skills Demonstrated
