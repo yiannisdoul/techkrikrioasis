@@ -73,7 +73,7 @@ src/
 ```
 ---
 
-💼 Skills Demonstrated
+## 💼 Skills Demonstrated
 This project demonstrates real-world proficiency in:
 
 ✅ Modern Vue 3 composition API  
@@ -86,18 +86,18 @@ This project demonstrates real-world proficiency in:
 
 ---
 
-📌 Upcoming Additions
+## 📌 Upcoming Additions
     ⚡ Dynamic content loading & CMS integration
     🛒 Service-based pricing plans and checkout flow
 
 ---
 
-👨‍💻 About the Developer
-This project is built and maintained by Ioannis Doulgerakis, the founder of Tech Kri Kri Oasis, and his Team
-I’m a full-stack developer and digital strategist focused on blending creative design with performance-optimized code. I build modern frontend ecosystems that scale, convert, and look great across all devices.
+## 👨‍💻 About the Developer
+This project is built and maintained by Ioannis Doulgerakis, the founder of Tech Kri Kri Oasis, and his Team.  
+I’m a full-stack developer and digital strategist focused on blending creative design with performance-optimized code. I build modern frontend ecosystems that scale, convert, and look great across all devices.  
 🌍 techkrikrioasis.com.au
 
 ---
 
-📄 License
+## 📄 License
 This project is open-sourced under the MIT License. All visual assets and illustrations are original or AI-generated and royalty-free for commercial use within TK²O branding only
