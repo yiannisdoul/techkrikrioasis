@@ -1,6 +1,6 @@
 # Tech Kri Kri Oasis (TK²O) — Full Frontend Rebuild 🌐
 
-A fully responsive, animated, and modern web application built using **Vue 3**, **Vite**, **TypeScript**, and **Tailwind CSS**, serving as the frontend foundation for [TechKriKriOasis.com](https://techkrikrioasis.com.au) — a digital agency built for performance, clarity, and creativity.
+A fully responsive, animated, and modern web application built using **Vue 3**, **Vite**, **TypeScript**, and **Tailwind CSS**, serving as the frontend foundation for [Tech Kri Kri Oasis](https://techkrikrioasis.com.au) — a digital agency built for performance, clarity, and creativity.
 
 > **Live Preview (coming soon)**
 
