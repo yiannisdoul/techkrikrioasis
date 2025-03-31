@@ -4,7 +4,7 @@
     <ServicesSection />
     <WhyUsSection />
     <TestimonialsSection />
-    <CTASection />
+    <!-- <CTASection /> -->
   </main>
 </template>
 
@@ -13,7 +13,7 @@ import HeroSection from '../components/HeroSection.vue';
 import ServicesSection from '../components/ServicesSection.vue';
 import WhyUsSection from '../components/WhyUsSection.vue';
 import TestimonialsSection from '../components/TestimonialsSection.vue';
-import CTASection from '../components/CTASection.vue';
+// import CTASection from '../components/CTASection.vue';
 </script>
 
 <style scoped>

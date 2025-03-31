@@ -31,6 +31,7 @@
             class="portfolio-card w-[320px] flex-shrink-0"
             :title="project.title"
             :cover="project.cover"
+            :category="project.category"
             :onClick="() => $emit('open', project)"
           />
         </div>
@@ -62,6 +63,7 @@
       cover: string;
       description: string;
       images: string[];
+      category: string;
       link?: string;
     }[];
   }>();

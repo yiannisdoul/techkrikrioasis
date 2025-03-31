@@ -10,11 +10,12 @@
         Transformation
       </h1>
       <p class="text-gray-600 text-base sm:text-lg mb-6">
-        With 5 years of full-stack expertise, we craft cutting-edge websites, e-commerce platforms,
-        and mobile apps customized to your business needs.
+        Backed by 10 years of combined sales and full-stack development experience, 
+        we create cutting-edge websites, e-commerce platforms, and mobile apps that don’t 
+        just look great—they drive results and align perfectly with your business strategy.
       </p>
       <router-link
-        to="/contact"
+        to="/services"
         class="inline-block bg-[#E85D04] text-white px-6 py-3 rounded-md hover:bg-[#D0008E] transition text-sm sm:text-base"
       >
         Get Started

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="py-16 sm:py-20 px-4 sm:px-6 md:px-10 text-center bg-[#E85D04] text-white"
+    class="pt-16 sm:pt-20 pb-12 px-4 sm:px-6 md:px-10 text-center bg-[#E85D04] text-white"
     data-aos="fade-up"
     data-aos-duration="800"
   >
@@ -14,7 +14,7 @@
 
       <router-link
         to="/contact"
-        class="inline-block bg-white text-[#E85D04] font-semibold px-6 py-3 rounded-md hover:bg-[#FDF8F3] transition text-sm sm:text-base"
+        class="inline-block bg-white text-[#E85D04] font-semibold px-6 py-3 rounded-md hover:bg-[#FDF8F3] transition text-sm sm:text-base animate-pulse"
       >
         Book a Free Call
       </router-link>
