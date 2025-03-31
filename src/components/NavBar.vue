@@ -34,7 +34,7 @@
         <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/about">About</router-link></li>
         <li><router-link to="/services">Services</router-link></li>
-        <li><router-link to="/pricing">Pricing</router-link></li>
+        <li><router-link to="/portfolio">Portfolio</router-link></li>
         <li><router-link to="/contact">Contact</router-link></li>
       </ul>
     </div>
@@ -46,7 +46,7 @@
           <li><router-link to="/" @click="closeMenu">Home</router-link></li>
           <li><router-link to="/about" @click="closeMenu">About</router-link></li>
           <li><router-link to="/services" @click="closeMenu">Services</router-link></li>
-          <li><router-link to="/pricing" @click="closeMenu">Pricing</router-link></li>
+          <li><router-link to="/portfolio" @click="closeMenu">Portfolio</router-link></li>
           <li><router-link to="/contact" @click="closeMenu">Contact</router-link></li>
         </ul>
       </div>

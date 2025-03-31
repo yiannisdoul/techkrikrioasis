@@ -50,3 +50,11 @@
     line-height: 1;
   }
 }
+
+:root {
+  --background-color: #FCF7F2;
+}
+body {
+  background-color: var(--background-color);
+}
+
