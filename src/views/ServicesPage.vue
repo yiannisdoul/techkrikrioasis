@@ -1,105 +1,147 @@
 <template>
-  <div class="pt-24 px-6 md:px-12 lg:px-20">
-    <!-- Page Title -->
-    <h1 class="text-4xl font-bold text-[var(--primary-color)] mb-6">Our Services</h1>
-    <p class="text-gray-700 max-w-3xl mb-10">
-      We provide a wide range of services tailored to help your business grow, scale, and thrive online:
-    </p>
+  <section class="py-20 px-4 sm:px-8 lg:px-16 bg-beige min-h-screen">
+    <h1 class="text-4xl font-bold text-center mb-12">Our Services & Packages</h1>
 
-    <!-- 🌟 Pricing Grid (4 main packages) -->
-    <PricingGrid class="mb-16" />
+    <!-- 5-Tier Main Bundled Packages -->
+    <PricingSection class="mb-20" />
 
-    <!-- 🧩 Service Categories (Accordion) -->
-    <div v-for="(category, index) in serviceCategories" :key="index" class="mb-8">
-      <details class="bg-[#FDF8F3] p-6 rounded-lg shadow-sm transition-all" data-aos="fade-up">
-        <summary class="text-lg font-semibold cursor-pointer text-[#D0008E]">
-          {{ category.title }}
-        </summary>
-        <div class="mt-4 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+    <!-- Individual Services (with Modals) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <ServiceCard
+        v-for="(service, index) in services"
+        :key="index"
+        :title="service.title"
+        :icon="service.icon"
+        :description="service.description"
+        @open="selected = service"
+      />
+    </div>
+
+    <!-- Modal with Plans -->
+    <ServiceModal :isOpen="selected !== null" @close="selected = null">
+      <template v-if="selected">
+        <h3 class="text-2xl font-bold text-[#D0008E] mb-6">{{ selected.title }}</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div
-            v-for="(pkg, idx) in category.packages"
-            :key="idx"
-            class="bg-white rounded-lg p-4 border hover:shadow-md transition card-hover"
+            v-for="(plan, i) in selected.plans"
+            :key="i"
+            class="border rounded-lg p-4 shadow bg-white"
           >
-            <h4 class="text-md font-bold text-[#E85D04] mb-2">{{ pkg.name }}</h4>
-            <ul class="text-sm text-gray-600 list-disc pl-4">
-              <li v-for="(item, i) in pkg.features" :key="i">{{ item }}</li>
+            <h4 class="text-lg font-semibold mb-2">{{ plan.name }}</h4>
+            <p class="text-sm text-gray-600 mb-3">Starting from <strong>{{ plan.price }}</strong></p>
+            <ul class="text-sm text-gray-700 list-disc pl-4 space-y-1">
+              <li v-for="(feature, j) in plan.features" :key="j">{{ feature }}</li>
             </ul>
-            <p class="mt-2 text-xs text-gray-500">💸 {{ pkg.price }}</p>
           </div>
         </div>
-      </details>
-    </div>
-  </div>
+      </template>
+    </ServiceModal>
+  </section>
 </template>
 
-<script setup lang="ts">
-import PricingGrid from '../components/PricingGrid.vue';
+<script setup>
+import { ref } from 'vue'
+import PricingSection from '@/components/Pricing/PricingSection.vue'
+import ServiceCard from '@/components/services/ServiceCard.vue'
+import ServiceModal from '@/components/services/ServiceModal.vue'
 
-const serviceCategories = [
+import webDevIcon from '@/assets/icons/web-dev.png'
+import mobileAppIcon from '@/assets/icons/mobile-app.png'
+import ecommerceIcon from '@/assets/icons/ecommerce.png'
+import seoIcon from '@/assets/icons/seo.png'
+import digitalMarketingIcon from '@/assets/icons/digital_marketing.png'
+import dronePhotographyIcon from '@/assets/icons/drone_photography.png'
+import graphicDesignIcon from '@/assets/icons/graphic_design.png'
+import strategyConsultingIcon from '@/assets/icons/strategy_consulting.png'
+
+const services = [
   {
     title: 'Web Development',
-    packages: [
-      { name: 'Basic', features: ['5 pages', 'Contact form'], price: '$500 – $1,200' },
-      { name: 'Advanced', features: ['10 pages', 'Blog', 'CMS'], price: '$1,500 – $3,000' },
-      { name: 'Premium', features: ['Custom UI/UX', 'Animations'], price: '$4,000 – $7,000' },
+    icon: webDevIcon,
+    description: 'Custom websites built with WordPress or code from scratch.',
+    plans: [
+      { name: 'Basic', price: '$500 – $1,200', features: ['5 pages', 'Contact form'] },
+      { name: 'Advanced', price: '$1,500 – $3,000', features: ['10 pages', 'Blog', 'CMS'] },
+      { name: 'Premium', price: '$4,000 – $7,000', features: ['Custom UI/UX', 'Animations'] },
     ],
   },
   {
     title: 'Mobile App Development',
-    packages: [
-      { name: 'Starter App', features: ['iOS or Android'], price: '$2,000 – $5,000' },
-      { name: 'Growth App', features: ['Cross-platform', 'API'], price: '$5,000 – $10,000' },
-      { name: 'Pro App', features: ['Custom backend', 'App store support'], price: '$10,000+' },
-    ],
-  },
-  {
-    title: 'SEO',
-    packages: [
-      { name: 'Local SEO', features: ['GMB setup', 'Citations'], price: '$500 – $1,500' },
-      { name: 'Growth SEO', features: ['On-page + Off-page'], price: '$2,000 – $4,000' },
-      { name: 'Enterprise SEO', features: ['Content + Backlinks'], price: '$5,000+' },
+    icon: mobileAppIcon,
+    description: 'Android & iOS apps built for startups and businesses.',
+    plans: [
+      { name: 'Starter App', price: '$2,000 – $5,000', features: ['iOS or Android', '3–5 Screens'] },
+      { name: 'Growth App', price: '$5,000 – $10,000', features: ['Cross-platform', 'API integration'] },
+      { name: 'Pro App', price: '$10,000+', features: ['Backend + CMS', 'App store support'] },
     ],
   },
   {
     title: 'E-Commerce',
-    packages: [
-      { name: 'Launch', features: ['Shopify or WooCommerce'], price: '$800 – $2,000' },
-      { name: 'Growth Store', features: ['Product setup', 'Payment integration'], price: '$3,000 – $6,000' },
-      { name: 'Pro Ecommerce', features: ['Custom UX', 'Sales funnel'], price: '$7,000+' },
+    icon: ecommerceIcon,
+    description: 'Online stores that convert, on Shopify, WooCommerce, or custom.',
+    plans: [
+      { name: 'Launch', price: '$1,200 – $2,000', features: ['Shopify/Woo setup', '10 products'] },
+      { name: 'Growth Store', price: '$2,500 – $5,000', features: ['30–50 products', 'Upsell funnels'] },
+      { name: 'Pro Ecommerce', price: '$6,000 – $12,000', features: ['Advanced filtering', 'Custom features'] },
+    ],
+  },
+  {
+    title: 'SEO',
+    icon: seoIcon,
+    description: 'Rank your website locally and nationally with smart SEO.',
+    plans: [
+      { name: 'Local SEO', price: '$500 – $1,500', features: ['GMB setup', 'Citations'] },
+      { name: 'Growth SEO', price: '$1,500 – $2,500', features: ['On-page + Tech SEO', '4 Blogs/mo'] },
+      { name: 'Enterprise SEO', price: '$3,000 – $6,000', features: ['Full audit', 'Link building'] },
     ],
   },
   {
     title: 'Digital Marketing',
-    packages: [
-      { name: 'Starter Ads', features: ['1 campaign', 'Google or Meta'], price: '$500 – $1,000' },
-      { name: 'Growth Campaign', features: ['2+ platforms', 'Ad creatives'], price: '$1,500 – $3,000' },
-      { name: 'Full Funnel', features: ['Retargeting + Analytics'], price: '$4,000+' },
+    icon: digitalMarketingIcon,
+    description: 'We drive traffic with smart Google Ads and Meta campaigns.',
+    plans: [
+      { name: 'Starter Ads', price: '$600 – $1,500/mo', features: ['Google or Meta', 'Landing page'] },
+      { name: 'Growth Campaign', price: '$2,000 – $4,000/mo', features: ['Google + Meta', 'Retargeting'] },
+      { name: 'Full Funnel', price: '$5,000 – $10,000/mo', features: ['Video Ads', 'Automation'] },
     ],
   },
   {
     title: 'Drone Photography',
-    packages: [
-      { name: 'Basic', features: ['1-hour shoot'], price: '$200 – $400' },
-      { name: 'Content', features: ['Photo + Video'], price: '$500 – $900' },
-      { name: 'Premium', features: ['Full-day + Editing'], price: '$1,000+' },
+    icon: dronePhotographyIcon,
+    description: 'Capture property or events with stunning drone shots.',
+    plans: [
+      { name: 'Basic Shoot', price: '$300 – $600', features: ['30 mins flight', '10 photos', '1080p video'] },
+      { name: 'Content Package', price: '$700 – $1,200', features: ['20 photos + 4K video', 'B-roll edits'] },
+      { name: 'Premium Shoot', price: '$1,500+', features: ['Full-day shoot', 'Cinematic edits'] },
     ],
   },
   {
     title: 'Graphic Design',
-    packages: [
-      { name: 'Essentials', features: ['Logo + Social banners'], price: '$300 – $700' },
-      { name: 'Brand Kit', features: ['Fonts, colors, guidelines'], price: '$800 – $1,500' },
-      { name: 'Visual Identity', features: ['Custom branding system'], price: '$2,000+' },
+    icon: graphicDesignIcon,
+    description: 'Visuals that speak your brand: logos, kits & more.',
+    plans: [
+      { name: 'Essentials Pack', price: '$250 – $600', features: ['Logo', 'Business card'] },
+      { name: 'Brand Kit', price: '$700 – $1,200', features: ['Logo + colors + fonts', 'Social kit'] },
+      { name: 'Visual Identity Pro', price: '$1,500 – $3,000', features: ['Full brand strategy', 'Motion graphics'] },
     ],
   },
   {
     title: 'Strategy & Consulting',
-    packages: [
-      { name: 'Starter', features: ['1-hour strategy call'], price: '$150 – $300' },
-      { name: 'Growth Audit', features: ['Full website + marketing audit'], price: '$500 – $1,000' },
-      { name: 'Advisory', features: ['Ongoing CXO-level support'], price: '$2,000+' },
+    icon: strategyConsultingIcon,
+    description: 'Business & tech consulting with ROI-first mindset.',
+    plans: [
+      { name: 'Starter Strategy', price: '$300 – $800', features: ['1–2 hour consult', 'Audit + Roadmap'] },
+      { name: 'Growth Audit', price: '$1,000 – $2,500', features: ['Full audit', '30-day plan'] },
+      { name: 'Ongoing Advisory', price: '$3,000+/mo', features: ['Fractional CMO/CTO', 'Weekly sessions'] },
     ],
   },
-];
+]
+
+const selected = ref(null)
 </script>
+
+<style scoped>
+.bg-beige {
+  background-color: #f8f5f0;
+}
+</style>

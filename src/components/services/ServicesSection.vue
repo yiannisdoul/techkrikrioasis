@@ -25,15 +25,14 @@
 </template>
 
 <script setup lang="ts">
-// 🧩 Icon Imports
-import webDevIcon from '../assets/icons/web-dev.png';
-import mobileAppIcon from '../assets/icons/mobile-app.png';
-import ecommerceIcon from '../assets/icons/ecommerce.png';
-import seoIcon from '../assets/icons/seo.png';
-import digitalMarketingIcon from '../assets/icons/digital_marketing.png';
-import dronePhotographyIcon from '../assets/icons/drone_photography.png';
-import graphicDesignIcon from '../assets/icons/graphic_design.png';
-import strategyConsultingIcon from '../assets/icons/strategy_consulting.png';
+import webDevIcon from '@/assets/icons/web-dev.png'
+import mobileAppIcon from '@/assets/icons/mobile-app.png'
+import ecommerceIcon from '@/assets/icons/ecommerce.png'
+import seoIcon from '@/assets/icons/seo.png'
+import digitalMarketingIcon from '@/assets/icons/digital_marketing.png'
+import dronePhotographyIcon from '@/assets/icons/drone_photography.png'
+import graphicDesignIcon from '@/assets/icons/graphic_design.png'
+import strategyConsultingIcon from '@/assets/icons/strategy_consulting.png'
 
 const services = [
   { title: 'Web Development', icon: webDevIcon },
@@ -44,14 +43,5 @@ const services = [
   { title: 'Drone Photography', icon: dronePhotographyIcon },
   { title: 'Graphic Design', icon: graphicDesignIcon },
   { title: 'Strategy & Consulting', icon: strategyConsultingIcon },
-];
+]
 </script>
-
-<style scoped>
-.card-hover {
-  transition: transform 0.25s ease;
-}
-.card-hover:hover {
-  transform: scale(1.05);
-}
-</style>

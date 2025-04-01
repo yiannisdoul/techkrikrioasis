@@ -20,7 +20,7 @@
   </template>
   
   <script setup lang="ts">
-  import BlogCard from '../components/BlogCard.vue'
+  import BlogCard from '../components/blog/BlogCard.vue'
   
   const posts = [
     {

@@ -4,7 +4,7 @@
       <!-- Logo + Animated Text -->
       <router-link to="/" class="flex items-center space-x-3">
         <img
-          src="../assets/logo.png"
+          src="@/assets/logo.png"
           alt="Logo"
           class="h-14 w-14 md:h-20 md:w-20 object-contain transition-transform hover:rotate-6 hover:scale-105"
         />

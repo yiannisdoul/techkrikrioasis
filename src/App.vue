@@ -26,9 +26,9 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import NavBar from './components/NavBar.vue';
-import Footer from './components/Footer.vue';
-import CTASection from './components/CTASection.vue';
+import NavBar from './components/layout/NavBar.vue';
+import Footer from './components/layout/Footer.vue';
+import CTASection from './components/sections/CTASection.vue';
 
 const route = useRoute();
 

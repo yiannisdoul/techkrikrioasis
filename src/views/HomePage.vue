@@ -9,10 +9,10 @@
 </template>
 
 <script setup lang="ts">
-import HeroSection from '../components/HeroSection.vue';
-import ServicesSection from '../components/ServicesSection.vue';
-import WhyUsSection from '../components/WhyUsSection.vue';
-import TestimonialsSection from '../components/TestimonialsSection.vue';
+import HeroSection from '../components/sections/HeroSection.vue';
+import ServicesSection from '../components/services/ServicesSection.vue';
+import WhyUsSection from '../components/sections/WhyUsSection.vue';
+import TestimonialsSection from '../components/sections/TestimonialsSection.vue';
 // import CTASection from '../components/CTASection.vue';
 </script>
 

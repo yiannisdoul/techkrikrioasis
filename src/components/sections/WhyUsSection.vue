@@ -26,12 +26,12 @@
 </template>
 
 <script setup lang="ts">
-import humanCentricIcon from '../assets/icons/human-centric.png';
-import transparentDeliveryIcon from '../assets/icons/transparent-delivery.png';
-import speedIcon from '../assets/icons/speed.png';
-import roiIcon from '../assets/icons/roi.png';
-import pricingIcon from '../assets/icons/pricing.png';
-import toolsIcon from '../assets/icons/tools.png';
+import humanCentricIcon from '@/assets/icons/human-centric.png';
+import transparentDeliveryIcon from '@/assets/icons/transparent-delivery.png';
+import speedIcon from '@/assets/icons/speed.png';
+import roiIcon from '@/assets/icons/roi.png';
+import pricingIcon from '@/assets/icons/pricing.png';
+import toolsIcon from '@/assets/icons/tools.png';
 
 const features = [
   {

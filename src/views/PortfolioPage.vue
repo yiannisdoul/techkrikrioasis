@@ -633,8 +633,8 @@
 </template>
 
 <script setup lang="ts">
-import PortfolioCard from '../components/PortfolioCard.vue'
-import PortfolioModal from '../components/PortfolioModal.vue'
+import PortfolioCard from '../components/portfolio/PortfolioCard.vue'
+import PortfolioModal from '../components/portfolio/PortfolioModal.vue'
 import { ref } from 'vue'
 
 // 🔁 Unified project list

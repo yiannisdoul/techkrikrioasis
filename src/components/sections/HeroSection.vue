@@ -25,7 +25,7 @@
     <!-- Right Image -->
     <div class="flex justify-center md:justify-end" data-aos="fade-left" data-aos-duration="800">
       <img
-        src="../assets/hero-illustration.png"
+        src="@/assets/hero-illustration.png"
         alt="Hero illustration"
         class="w-64 sm:w-72 md:w-full max-w-md"
       />
