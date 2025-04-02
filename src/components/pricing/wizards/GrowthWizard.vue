@@ -3,8 +3,9 @@
       :title="basePackage.title"
       :price="basePackage.price"
       :addons="[
-        { label: 'Automated Email Setup', price: 900 },
-        { label: 'Landing Funnel', price: 1500 }
+        { label: 'Extra Pages', price: 800 },
+        { label: 'Advanced SEO', price: 1200 },
+        { label: 'Logo Suite', price: 400 }
       ]"
       @close="$emit('close')"
     />

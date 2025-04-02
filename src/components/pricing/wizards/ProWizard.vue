@@ -3,8 +3,8 @@
       :title="basePackage.title"
       :price="basePackage.price"
       :addons="[
-        { label: 'Full App Store Setup', price: 2000 },
-        { label: 'UX Design Sprint', price: 2500 }
+        { label: 'Automated Email Setup', price: 900 },
+        { label: 'Landing Funnel', price: 1500 }
       ]"
       @close="$emit('close')"
     />

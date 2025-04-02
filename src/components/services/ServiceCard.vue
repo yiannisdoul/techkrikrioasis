@@ -1,4 +1,3 @@
-<!-- components/services/ServiceCard.vue -->
 <template>
     <div
       @click="$emit('open')"

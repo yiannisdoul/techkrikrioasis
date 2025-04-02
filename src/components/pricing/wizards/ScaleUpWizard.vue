@@ -3,9 +3,8 @@
       :title="basePackage.title"
       :price="basePackage.price"
       :addons="[
-        { label: 'Extra Pages', price: 800 },
-        { label: 'Advanced SEO', price: 1200 },
-        { label: 'Logo Suite', price: 400 }
+        { label: 'Full App Store Setup', price: 2000 },
+        { label: 'UX Design Sprint', price: 2500 }
       ]"
       @close="$emit('close')"
     />

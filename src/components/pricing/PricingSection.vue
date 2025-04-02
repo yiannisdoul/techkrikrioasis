@@ -1,58 +1,80 @@
 <template>
-  <section class="py-20 px-4 sm:px-8 lg:px-16" data-aos="fade-up">
+  <section class="py-20 px-4 sm:px-8 lg:px-16 bg-beige scroll-smooth">
+    <!-- Mobile CTA at top -->
+    <div class="sm:hidden text-center mb-10">
+      <h2 class="text-xl font-bold mb-2">Not sure which service fits?</h2>
+      <p class="text-gray-600 mb-4 text-sm">
+        Answer a few quick questions to build your ideal digital solution.
+      </p>
+      <AnimatedButton label="🛠️ Build Your Package" @click="showWizard = true" />
+    </div>
+
+    <!-- Section Heading -->
     <h2 class="text-3xl font-bold text-center mb-12">Bundled Service Packages</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8">
+    <!-- Package Grid (Snap Scroll on Mobile) -->
+    <div
+      class="flex flex-row sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 overflow-x-auto sm:overflow-visible pb-4 snap-x snap-mandatory"
+    >
       <div
-        v-for="(packageItem, index) in packages"
-        :key="index"
-        class="rounded-2xl border border-gray-300 bg-gradient-to-b from-[#f3efe7] to-[#fffaf5] shadow-[0_6px_24px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_28px_rgba(0,0,0,0.12)] hover:scale-[1.03] hover:ring-2 hover:ring-orange-400 transition-all duration-300 ease-in-out aos-fade"
-        :data-aos="'fade-up'"
-        :data-aos-delay="index * 150"
+        v-for="pkg in packages"
+        :key="pkg.key"
+        class="min-w-[85vw] sm:min-w-0 sm:w-auto snap-start snap-always rounded-xl bg-white shadow-md border border-gray-200 p-4 flex flex-col justify-between"
       >
-        <!-- Inner Glow Container -->
-        <div class="rounded-xl bg-white/90 shadow-inner p-4 flex flex-col justify-between gap-4">
+        <!-- Title & Price -->
+        <div class="mb-4">
+          <h3 class="text-lg font-bold text-center">{{ pkg.title }}</h3>
+          <p class="text-center text-gray-700 text-sm">💰 Value: {{ pkg.value }}</p>
+          <p class="text-center text-xl font-semibold mt-1 text-orange-600">{{ pkg.price }}</p>
+        </div>
 
-          <!-- Optional Lottie Icon -->
-          <LottieIcon :name="packageItem.title.toLowerCase()" class="w-16 h-16 mx-auto mb-2" />
-
-          <!-- Title & Price -->
-          <div>
-            <h3 class="text-lg font-semibold text-center text-gray-900 mb-1">
-              {{ packageItem.title }}
-            </h3>
-            <div class="h-1 w-8 bg-orange-500 mx-auto mb-4 rounded-full"></div>
-            <p class="text-center text-2xl font-bold text-gray-800 mb-6">
-              Starting from ${{ packageItem.price }}
-            </p>
-
-            <!-- Features -->
-            <ul class="space-y-2 text-sm text-gray-700">
-              <li
-                v-for="(feature, i) in packageItem.features"
-                :key="i"
-                class="flex items-start"
+        <!-- Scrollable Categories -->
+        <div class="overflow-x-auto flex flex-col gap-2 max-w-full pr-2">
+          <div
+            v-for="(category, i) in pkg.categories"
+            :key="i"
+            class="border-b py-2 cursor-pointer transition hover:text-orange-600 min-w-[250px]"
+            @click="toggleSection(pkg.key, i)"
+          >
+            <div class="flex justify-between items-center">
+              <span>{{ category.icon }} {{ category.name }}</span>
+              <span
+                :class="[
+                  'text-lg transition-transform duration-300',
+                  isExpanded(pkg.key, i) ? 'text-orange-500' : 'text-gray-500'
+                ]"
               >
-                <span class="text-orange-500 mt-0.5 mr-2">•</span>
-                <span>{{ feature }}</span>
-              </li>
+                {{ isExpanded(pkg.key, i) ? '−' : '+' }}
+              </span>
+            </div>
+
+            <ul
+              v-if="isExpanded(pkg.key, i)"
+              class="mt-2 ml-5 list-disc text-sm text-gray-700 space-y-1"
+            >
+              <li v-for="(item, j) in category.items" :key="j">{{ item }}</li>
             </ul>
           </div>
-
-          <!-- Reusable Button Component -->
-          <AnimatedButton
-            label="Get Started"
-            class="mt-4"
-            @click="openWizard(packageItem)"
-          />
         </div>
+
+        <!-- Action Button -->
+        <AnimatedButton class="mt-4" label="Get Started!" @click="openWizard(pkg)" />
       </div>
     </div>
 
-    <!-- Modal Wizard -->
+    <!-- Desktop CTA -->
+    <div class="hidden sm:block text-center mt-16">
+      <h2 class="text-2xl font-bold mb-4">Ready to bring your ideas to life?</h2>
+      <p class="text-gray-600 mb-6">
+        Choose your services and let us build a custom quote tailored to your goals.
+      </p>
+      <AnimatedButton label="🚀 Start Building" @click="showWizard = true" />
+    </div>
+
+    <!-- Wizard Modal -->
     <component
-      v-if="showWizard && selectedPackage?.title"
-      :is="wizardComponents[selectedPackage.title]"
+      v-if="showWizard && selectedPackage?.key"
+      :is="wizardComponents[selectedPackage.key]"
       :base-package="selectedPackage"
       @close="showWizard = false"
     />
@@ -61,67 +83,46 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import AnimatedButton from '@/components/ui/AnimatedButton.vue'
 
-// 🧩 Wizards
+// Wizard Components
 import StarterWizard from './wizards/StarterWizard.vue'
-import EssentialsWizard from './wizards/EssentialsWizard.vue'
 import GrowthWizard from './wizards/GrowthWizard.vue'
 import ProWizard from './wizards/ProWizard.vue'
+import ScaleUpWizard from './wizards/ScaleUpWizard.vue'
 import EnterpriseWizard from './wizards/EnterpriseWizard.vue'
 
-// ✨ Global UI components
-import AnimatedButton from '@/components/ui/AnimatedButton.vue'
-import LottieIcon from '@/components/ui/LottieIcon.vue'
+// Data & Types
+import { packages } from '../services/BundledServicesData'
+import type { Package } from '../services/BundledServicesData'
 
-type Package = {
-  title: keyof typeof wizardComponents
-  price: number
-  features: string[]
-}
-
-const selectedPackage = ref<Package | null>(null)
-const showWizard = ref(false)
-
-function openWizard(packageItem: Package) {
-  selectedPackage.value = packageItem
-  showWizard.value = true
-}
-
+// Wizard Lookup
 const wizardComponents = {
   Starter: StarterWizard,
-  Essentials: EssentialsWizard,
   Growth: GrowthWizard,
   Pro: ProWizard,
+  ScaleUp: ScaleUpWizard,
   Enterprise: EnterpriseWizard
 }
 
-const packages: Package[] = [
-  {
-    title: 'Starter',
-    price: 2000,
-    features: ['Responsive Website (5 pages)', 'Basic Logo & Brand Colors', '1-Week Launch Support']
-  },
-  {
-    title: 'Essentials',
-    price: 5000,
-    features: ['10-Page Custom Design', 'SEO Setup', '30-Day Support']
-  },
-  {
-    title: 'Growth',
-    price: 10000,
-    features: ['SEO + Blog Setup', 'Email Marketing Ready', '2-Month Maintenance']
-  },
-  {
-    title: 'Pro',
-    price: 25000,
-    features: ['Mobile App + CMS', 'Advanced Funnels', '3-Month Priority Support']
-  },
-  {
-    title: 'Enterprise',
-    price: 50000,
-    features: ['Native Apps & Integrations', 'Custom Dashboard & CRM', '6-Month SLA Support']
-  }
-]
+const showWizard = ref(false)
+const selectedPackage = ref<Package | null>(null)
+const expandedStates = ref<Record<string, number[]>>({})
+
+function toggleSection(key: string, index: number) {
+  expandedStates.value[key] ??= []
+  const i = expandedStates.value[key].indexOf(index)
+  if (i === -1) expandedStates.value[key].push(index)
+  else expandedStates.value[key].splice(i, 1)
+}
+
+const isExpanded = (key: string, index: number) =>
+  expandedStates.value[key]?.includes(index)
+
+function openWizard(pkg: Package) {
+  selectedPackage.value = pkg
+  showWizard.value = true
+}
 
 onMounted(() => {
   if (typeof window !== 'undefined' && window.Aos) {
@@ -129,3 +130,12 @@ onMounted(() => {
   }
 })
 </script>
+
+<style scoped>
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+.rotate-45 {
+  transform: rotate(45deg);
+}
+</style>
