@@ -9,6 +9,11 @@ import 'aos/dist/aos.css';
 
 AOS.init();
 
+AOS.init({
+  duration: 800,
+  once: true
+})
+
 import { MotionPlugin } from '@vueuse/motion'
 
 const app = createApp(App);

@@ -63,13 +63,13 @@
     </div>
 
     <!-- Desktop CTA -->
-    <div class="hidden sm:block text-center mt-16">
+    <!-- <div class="hidden sm:block text-center mt-16">
       <h2 class="text-2xl font-bold mb-4">Ready to bring your ideas to life?</h2>
       <p class="text-gray-600 mb-6">
         Choose your services and let us build a custom quote tailored to your goals.
       </p>
       <AnimatedButton label="🚀 Start Building" @click="showWizard = true" />
-    </div>
+    </div> -->
 
     <!-- Wizard Modal -->
     <component

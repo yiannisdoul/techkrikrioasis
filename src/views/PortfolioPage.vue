@@ -1,3 +1,4 @@
+<!-- This is commented out for when I start having more projects that I would like to submit... this is a more scalable template -->
 <!-- <template>
     <div class="pt-24">
       <h1
