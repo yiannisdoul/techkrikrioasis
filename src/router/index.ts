@@ -8,8 +8,8 @@ import Portfolio from '../views/PortfolioPage.vue'
 import Contact from '../views/ContactPage.vue'
 import Blog from '../views/BlogPage.vue'
 
-// ✅ Corrected: Auto-import all blog post .vue files from components/blog
-const blogPages = import.meta.glob('../components/blog/*.vue')
+// ✅ Corrected: Auto-import all blog post .vue files from components/blog/etc.
+const blogPages = import.meta.glob('../components/blog/**/*.vue') 
 
 // 🔄 Generate routes dynamically for blog pages
 const blogRoutes: RouteRecordRaw[] = Object.keys(blogPages).map((path) => {

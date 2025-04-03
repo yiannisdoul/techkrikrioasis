@@ -25,11 +25,11 @@
       </select>
     </section>
 
-    <!-- Blog Cards -->
+    <!-- Blog Cards (Horizontal Scroll) -->
     <section class="overflow-x-auto snap-x snap-mandatory px-4 pb-12">
-      <div v-if="visiblePosts.length" class="flex space-x-6 w-max">
+      <div v-if="filteredPosts.length" class="flex space-x-6 w-max">
         <div
-          v-for="(post, index) in visiblePosts"
+          v-for="(post, index) in filteredPosts"
           :key="index"
           class="min-w-[320px] max-w-xs bg-white rounded-xl shadow-lg p-4 snap-start flex-shrink-0 transition-all duration-300 hover:scale-105"
           data-aos="fade-up"
@@ -54,16 +54,6 @@
         <p>No blog posts found.</p>
       </div>
     </section>
-
-    <!-- Load More -->
-    <div v-if="filteredPosts.length > postLimit" class="text-center pb-16">
-      <button
-        @click="loadMore"
-        class="px-6 py-2 rounded-md bg-[#E85D04] text-white text-sm font-semibold hover:bg-[#d45203] transition"
-      >
-        Load More
-      </button>
-    </div>
   </div>
 </template>
 
@@ -79,10 +69,12 @@ type BlogPost = {
   category?: string
 }
 
-// Load blog .vue files
-const blogModules = import.meta.glob('@/components/blog/*.vue', { eager: true })
+const blogModules = import.meta.glob([
+  '@/components/blog/**/*.vue',
+  '!@/components/blog/_templates/**'
+], { eager: true })
 
-// Step 1: Safely collect metadata
+// ✅ Map metadata and exclude incomplete or invalid files
 const rawMapped = Object.entries(blogModules).map(([path, module]) => {
   const name = path.split('/').pop()?.replace('.vue', '') ?? ''
   const meta = (module as any).blogMeta
@@ -99,20 +91,17 @@ const rawMapped = Object.entries(blogModules).map(([path, module]) => {
   }
 })
 
-// Step 2: Filter + cast safely
+// ✅ Clean, sorted list
 const rawPosts = rawMapped.filter(Boolean) as BlogPost[]
-
-// Step 3: Sort by date
 const allPosts: BlogPost[] = [...rawPosts].sort((a, b) => {
   const d1 = new Date(`1 ${a.date}`)
   const d2 = new Date(`1 ${b.date}`)
   return d2.getTime() - d1.getTime()
 })
 
-// State
+// 🔍 Filter state
 const searchQuery = ref('')
 const selectedCategory = ref('')
-const postLimit = ref(4)
 
 const filteredPosts = computed(() =>
   allPosts.filter((post) => {
@@ -124,19 +113,16 @@ const filteredPosts = computed(() =>
   })
 )
 
-const visiblePosts = computed(() => filteredPosts.value.slice(0, postLimit.value))
-const loadMore = () => postLimit.value += 4
-
 const allCategories = Array.from(new Set(allPosts.map(p => p.category))).sort()
 </script>
 
 <style scoped>
 section::-webkit-scrollbar {
-  height: 16px;
+  height: 14px;
 }
 section::-webkit-scrollbar-thumb {
   background: #d0008e;
-  border-radius: 10px;
+  border-radius: 8px;
 }
 section::-webkit-scrollbar-track {
   background: transparent;

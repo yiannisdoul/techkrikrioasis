@@ -20,7 +20,7 @@ export const blogMeta: BlogMeta = {
 
 <script setup lang="ts">
 // ✅ Import your BlogLayout
-import BlogLayout from '../layout/BlogLayout.vue'
+import BlogLayout from '../../layout/BlogLayout.vue'
 </script>
 
 <template>
