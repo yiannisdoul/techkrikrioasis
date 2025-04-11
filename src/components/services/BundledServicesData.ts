@@ -5,6 +5,7 @@ export type Package = {
   title: string
   price: string
   value: string
+  subtitle: string
   categories: PackageCategory[]
 }
 
@@ -14,14 +15,15 @@ export const packages: Package[] = [
     title: '🟡 Starter',
     price: '$2,500 AUD',
     value: '~$4,050 AUD',
+    subtitle: 'Entry Package',
     categories: [
       { name: 'Website Development', icon: '🌐', items: ['Theme-based WordPress site (5 pages)'] },
-      { name: 'Branding Essentials', icon: '🎨', items: ['Logo, color palette, social banners'] },
-      { name: 'Domain & Email', icon: '📧', items: ['Domain registration + 1 professional email'] },
-      { name: 'Google Setup', icon: '📈', items: ['Google Business Profile + Analytics'] },
-      { name: 'SEO Metadata', icon: '✍️', items: ['Meta titles + page-level SEO'] },
+      { name: 'Brand Identity', icon: '🎨', items: ['Logo, color palette, social banners'] },
+      { name: 'Domain & Email Setup', icon: '📧', items: ['Domain registration + 1 professional email'] },
+      { name: 'SEO Setup', icon: '📈', items: ['Meta titles + basic page SEO'] },
       { name: 'Social Kit', icon: '📱', items: ['3–5 branded social post graphics'] },
-      { name: 'Strategy Call', icon: '🧠', items: ['1 x 30-min strategy session'] },
+      { name: 'Google Tools', icon: '📊', items: ['Google Business Profile + Analytics setup'] },
+      { name: 'Strategy Session', icon: '🧠', items: ['1 x 30-min strategy call'] },
       { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone Mini Shoot'] }
     ]
   },
@@ -30,15 +32,29 @@ export const packages: Package[] = [
     title: '🟠 Growth',
     price: '$5,000 AUD',
     value: '~$8,500 AUD',
+    subtitle: 'Includes Starter +',
     categories: [
-      { name: 'Website Development', icon: '🌐', items: ['6–8 page WordPress site (Divi)'] },
-      { name: 'E-Commerce Setup', icon: '🛒', items: ['Up to 20 products with checkout'] },
-      { name: 'Branding Pack', icon: '🎨', items: ['Logo, style guide, usage doc'] },
-      { name: 'Copywriting', icon: '✍️', items: ['Home, About, Services'] },
-      { name: 'SEO', icon: '📈', items: ['On-page SEO for 5 keywords'] },
-      { name: 'Email Automation', icon: '💬', items: ['Mailchimp/Brevo starter sequence'] },
-      { name: 'Social Kit', icon: '📱', items: ['5 branded graphics'] },
-      { name: 'Strategy Call', icon: '🧠', items: ['1 x 1-hour session'] },
+      { name: 'Website Development', icon: '🌐', items: [
+        'Includes: WordPress site (5p)',
+        '➔ Wordpress site (6–8 pages)'
+      ]},
+      { name: 'Brand Identity', icon: '🎨', items: [
+        'Includes: Logo, color palette, social banners',
+        '➔ Brand style guide'
+      ]},
+      { name: 'Domain & Email Setup', icon: '📧', items: ['Domain registration + 1 professional email'] },
+      { name: 'SEO Setup', icon: '📈', items: [
+        'Includes: Basic SEO setup',
+        '➔ On-page SEO for 5 keywords'
+      ]},
+      { name: 'Social Kit', icon: '📱', items: [
+        'Includes: 3–5 branded social posts',
+        '➔ 5 branded graphics'
+      ]},
+      { name: 'Google Tools', icon: '📊', items: ['Google Business Profile + Analytics setup'] },
+      { name: 'Copywriting', icon: '✍️', items: ['Website content: Home, About, Services pages'] },
+      { name: 'Email Automation', icon: '💬', items: ['Starter email sequence (Mailchimp/Brevo)'] },
+      { name: 'Strategy Session', icon: '🧠', items: ['1 x 1-hour strategy call'] },
       { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone Mini Shoot'] }
     ]
   },
@@ -47,17 +63,39 @@ export const packages: Package[] = [
     title: '🔵 Pro',
     price: '$10,000 AUD',
     value: '~$17,500 AUD',
+    subtitle: 'Includes Growth +',
     categories: [
-      { name: 'Custom Website', icon: '🌐', items: ['10–12 page custom design'] },
-      { name: 'Mobile App', icon: '📱', items: ['Hybrid app (up to 7 screens)'] },
-      { name: 'Brand Identity', icon: '🎨', items: ['Brand kit + tone of voice'] },
-      { name: 'Copywriting', icon: '✍️', items: ['Pages, blog post, funnel copy'] },
-      { name: 'SEO & Structure', icon: '📈', items: ['10+ keyword optimization'] },
-      { name: 'CRM + Automation', icon: '💬', items: ['CRM integrations + flows'] },
-      { name: 'Analytics', icon: '📊', items: ['GA4, Meta Pixel, Tag Manager'] },
-      { name: 'Social Kit', icon: '📸', items: ['10 branded graphics/templates'] },
-      { name: 'Strategy Call', icon: '🧠', items: ['2 x 1-hour sessions'] },
-      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone shoot + basic edit'] }
+      { name: 'Website Development', icon: '🌐', items: [
+        '➔ Custom designed website (10–12 pages)'
+      ]},
+      { name: 'Mobile App Development', icon: '📱', items: ['Hybrid mobile app (up to 7 screens)'] },
+      { name: 'Brand Identity', icon: '🎨', items: [
+        'Includes: Logo, style guide',
+        '➔ Brand kit + tone of voice'
+      ]},
+      { name: 'Domain & Email Setup', icon: '📧', items: ['Domain registration + 1 professional email'] },
+      { name: 'SEO Setup', icon: '📈', items: [
+        'Includes: Basic SEO + 5 keywords',
+        '➔ SEO optimization for 10+ keywords'
+      ]},
+      { name: 'Social Kit', icon: '📱', items: [
+        'Includes: 3–5 posts + 5 graphics',
+        '➔ 10 branded graphics/templates'
+      ]},
+      { name: 'Google Tools', icon: '📊', items: [
+        'Includes: Google Business Profile + Analytics',
+        '➔ Advanced tracking (GA4, Meta Pixel, Tag Manager)'
+      ]},
+      { name: 'Copywriting', icon: '✍️', items: [
+        'Includes: Website pages',
+        '➔ Blog post + funnel copy'
+      ]},
+      { name: 'Email Automation', icon: '💬', items: [
+        'Includes: Starter email flows',
+        '➔ CRM integrations + automations'
+      ]},
+      { name: 'Strategy Session', icon: '🧠', items: ['2 x 1-hour strategy sessions'] },
+      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone shoot + basic video edit'] }
     ]
   },
   {
@@ -65,16 +103,46 @@ export const packages: Package[] = [
     title: '🟣 Scale-Up',
     price: '$25,000 AUD',
     value: '~$38,000 AUD',
+    subtitle: 'Includes Pro +',
     categories: [
-      { name: 'Custom Platform', icon: '🌐', items: ['Web app, dashboard or portal'] },
-      { name: 'Mobile App', icon: '📱', items: ['Native or hybrid (8–10 screens)'] },
-      { name: 'E-Commerce Advanced', icon: '🛒', items: ['Subscriptions, accounts, POS'] },
-      { name: 'Branding + Copy', icon: '🎨', items: ['Voice, visuals, story'] },
-      { name: 'SEO + Funnel', icon: '📈', items: ['Blog system + conversion path'] },
-      { name: 'CRM & Flows', icon: '💬', items: ['Automated journeys + CRM'] },
-      { name: 'Admin UI', icon: '📊', items: ['CMS dashboard + analytics'] },
-      { name: 'Strategy Calls', icon: '🧠', items: ['4 x 1-hr sessions (monthly)'] },
-      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone + promo video cut'] }
+      { name: 'Website Development', icon: '🌐', items: [
+        'Includes: Custom Design',
+        '➔ Web app, dashboard or client portal'
+      ]},
+      { name: 'Mobile App Development', icon: '📱', items: [
+        '➔ Native app (8–10 screens)'
+      ]},
+      { name: 'E-Commerce Platform', icon: '🛒', items: [
+        'Includes: Basic e-commerce setup',
+        '➔ Advanced e-commerce (subscriptions, POS)'
+      ]},
+      { name: 'Brand Identity', icon: '🎨', items: [
+        'Includes: Brand kit + tone of voice',
+        '➔ Full brand story + visuals'
+      ]},
+      { name: 'Domain & Email Setup', icon: '📧', items: ['Domain registration + 1 professional email'] },
+      { name: 'SEO Setup', icon: '📈', items: [
+        'Includes: SEO for 10+ keywords',
+        '➔ Blog system + conversion funnel SEO'
+      ]},
+      { name: 'Social Kit', icon: '📱', items: [
+        'Includes: 10 branded graphics',
+        '➔ 10 more templates available'
+      ]},
+      { name: 'Google Tools', icon: '📊', items: [
+        'Includes: GA4, Meta Pixel, Tag Manager',
+        '➔ CMS dashboard + analytics panel'
+      ]},
+      { name: 'Copywriting', icon: '✍️', items: [
+        'Includes: Website, blog, funnel',
+        '➔ Advanced content support'
+      ]},
+      { name: 'Email Automation', icon: '💬', items: [
+        'Includes: CRM automations',
+        '➔ Advanced customer journeys'
+      ]},
+      { name: 'Strategy Session', icon: '🧠', items: ['4 x monthly strategy calls'] },
+      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone shoot + promo video cut'] }
     ]
   },
   {
@@ -82,16 +150,45 @@ export const packages: Package[] = [
     title: '🔴 Enterprise',
     price: '$50,000+ AUD',
     value: '~$70,000+ AUD',
+    subtitle: 'Includes Scale-Up +',
     categories: [
-      { name: 'Infrastructure', icon: '🌐', items: ['Web platform, internal tool, SaaS'] },
-      { name: 'Advanced App', icon: '📱', items: ['Cross-platform, APIs, integrations'] },
-      { name: 'Global SEO', icon: '📈', items: ['Multilingual, international targeting'] },
-      { name: 'AI Dashboards', icon: '🤖', items: ['Analytics, BI, funnel events'] },
-      { name: 'API Integrations', icon: '🔗', items: ['CRM, Payments, Databases'] },
-      { name: 'LMS / Portal', icon: '🎓', items: ['Learning management system'] },
-      { name: 'Brand System', icon: '🎨', items: ['Internal + external assets'] },
-      { name: 'Strategy Calls', icon: '🧠', items: ['12 x weekly 1-hr sessions'] },
-      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone or premium video asset'] }
+      { name: 'Website & SaaS Infrastructure', icon: '🌐', items: [
+        'Includes: Web App',
+        '➔ Full SaaS platform or internal tool'
+      ]},
+      { name: 'Mobile App Development', icon: '📱', items: [
+        '➔ Enterprise-grade app (Cross-platform, APIs, integrations)'
+      ]},
+      { name: 'E-Commerce Platform', icon: '🛒', items: [
+        'Includes: Advanced e-commerce',
+        '➔ Full enterprise e-commerce system'
+      ]},
+      { name: 'Brand Identity', icon: '🎨', items: [
+        'Includes: Brand story + visuals',
+        '➔ Full internal & external brand system'
+      ]},
+      { name: 'Domain & Email Setup', icon: '📧', items: ['Domain registration + unlimited emails'] },
+      { name: 'SEO Setup', icon: '📈', items: [
+        'Includes: Blog system + SEO funnel',
+        '➔ Global multilingual SEO targeting'
+      ]},
+      { name: 'Social Kit', icon: '📱', items: [
+        'Includes: All branded graphics',
+        '➔ Custom templates available'
+      ]},
+      { name: 'Google Tools & BI', icon: '📊', items: [
+        'Includes: CMS dashboard + analytics',
+        '➔ AI business dashboards + KPI tracking'
+      ]},
+      { name: 'API Integrations', icon: '🔗', items: ['CRM, Payment, Database integrations'] },
+      { name: 'LMS / Portal', icon: '🎓', items: ['Custom LMS or client portal system'] },
+      { name: 'Copywriting', icon: '✍️', items: ['Complete web, blog, and funnel content'] },
+      { name: 'Email Automation', icon: '💬', items: [
+        'Includes: CRM customer journeys',
+        '➔ Enterprise-grade marketing automations'
+      ]},
+      { name: 'Strategy Session', icon: '🧠', items: ['12 x weekly 1-hour sessions'] },
+      { name: 'Bonus (Melbourne)', icon: '☁️', items: ['Drone shoot or premium video production'] }
     ]
   }
 ]

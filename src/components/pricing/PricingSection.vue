@@ -16,11 +16,23 @@
       :key="pkg.key"
       class="min-w-[70vw] sm:min-w-0 sm:w-auto snap-start snap-always rounded-xl bg-white shadow-md border border-gray-200 p-4 flex flex-col justify-between"
     >
-      <!-- Title & Price -->
+      <!-- Title Subtitle & Price -->
       <div class="mb-4">
         <h3 class="text-lg font-bold text-center">{{ pkg.title }}</h3>
         <p class="text-center text-gray-700 text-sm">💰 Value: {{ pkg.value }}</p>
         <p class="text-center text-xl font-semibold mt-1 text-orange-600">{{ pkg.price }}</p>
+        <div
+          class="text-center font-semibold text-lg sm:text-xl mt-2"
+          :class="{
+            'text-red-500': pkg.key === 'Starter',
+            'text-yellow-500': pkg.key === 'Growth',
+            'text-orange-500': pkg.key === 'Pro',
+            'text-blue-500': pkg.key === 'ScaleUp',
+            'text-purple-500': pkg.key === 'Enterprise'
+          }"
+        >
+          {{ pkg.subtitle }}
+        </div>
       </div>
 
       <!-- Scrollable Categories -->

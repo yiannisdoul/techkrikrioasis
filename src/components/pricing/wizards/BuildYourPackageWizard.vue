@@ -54,6 +54,7 @@
             <div class="space-y-4 border-t pt-6">
               <input type="text" v-model="form.name" placeholder="Full Name" class="w-full border p-2 rounded" />
               <input type="text" v-model="form.business" placeholder="Business Name" class="w-full border p-2 rounded" />
+              <input type="tel" v-model="form.phone" placeholder="Phone Number" class="w-full border p-2 rounded" /> <!-- 🔥 NEW FIELD -->
               <input type="email" v-model="form.email" placeholder="Email Address" class="w-full border p-2 rounded" />
               <input type="text" v-model="form.location" placeholder="Location (City + Country)" class="w-full border p-2 rounded" />
               <select v-model="form.budget" class="w-full border p-2 rounded">
@@ -105,44 +106,44 @@ const services = [
 
 const tiers = {
   'Web Development': [
-    { label: 'Essential', description: '3–5 pages, theme-based' },
-    { label: 'Enhanced', description: '6–8 pages, SEO-ready' },
-    { label: 'Elite', description: '10+ pages, custom + CRM-ready' },
+    { label: 'Essential', description: '5-page WordPress site (theme-based, mobile responsive)' },
+    { label: 'Enhanced', description: '8-page professionally designed WordPress site (SEO-ready, blog-ready)' },
+    { label: 'Elite', description: '10+ page fully custom website (design, copywriting, CRM integration)' },
   ],
   'Mobile App Development': [
-    { label: 'Essential', description: '3–5 screens, simple functionality' },
-    { label: 'Enhanced', description: 'Cross-platform, login, data features' },
-    { label: 'Elite', description: 'Admin dashboard, scalable architecture' },
+    { label: 'Essential', description: 'Hybrid app (up to 5 screens, simple features)' },
+    { label: 'Enhanced', description: 'Cross-platform app (login, user data, notifications)' },
+    { label: 'Elite', description: 'Full app + admin dashboard (scalable, secure, API-ready)' },
   ],
   'E-Commerce': [
-    { label: 'Essential', description: 'Up to 15 products, standard checkout' },
-    { label: 'Enhanced', description: '50+ products, email flows, funnels' },
-    { label: 'Elite', description: 'Subscriptions, POS/API integrations' },
+    { label: 'Essential', description: 'Online store (up to 20 products, standard checkout)' },
+    { label: 'Enhanced', description: 'Full catalog (50+ products, abandoned cart recovery, funnels)' },
+    { label: 'Elite', description: 'Enterprise e-commerce (subscriptions, POS systems, API integrations)' },
   ],
   'SEO': [
-    { label: 'Essential', description: '3–5 keywords, basic audit' },
-    { label: 'Enhanced', description: '10+ keywords, backlinks, Google Ads' },
-    { label: 'Elite', description: 'Full funnel, paid ads, CRO & consulting' },
+    { label: 'Essential', description: 'SEO setup (5 keywords, on-page optimization)' },
+    { label: 'Enhanced', description: 'Advanced SEO (10+ keywords, Google Ads, backlinks)' },
+    { label: 'Elite', description: 'Full SEO funnel (paid ads, CRO, lead conversion strategy)' },
   ],
   'Digital Marketing': [
-    { label: 'Essential', description: 'Email templates, 1 campaign setup' },
-    { label: 'Enhanced', description: 'Ad campaign + content schedule' },
-    { label: 'Elite', description: 'Automated funnels, monthly reporting' },
+    { label: 'Essential', description: 'Email templates + 1 automated campaign' },
+    { label: 'Enhanced', description: 'Ad campaign setup + monthly content calendar' },
+    { label: 'Elite', description: 'Full marketing funnel (automation, reporting dashboard)' },
   ],
   'Branding & Graphic Design': [
-    { label: 'Essential', description: 'Logo, favicon, brand colors' },
-    { label: 'Enhanced', description: 'Social kit, slide decks' },
-    { label: 'Elite', description: 'Full brand book + media assets' },
+    { label: 'Essential', description: 'Logo, brand colors, social banners' },
+    { label: 'Enhanced', description: 'Full branding kit (logo, social templates, slide decks)' },
+    { label: 'Elite', description: 'Complete brand system (logo, brand book, media assets)' },
   ],
   'Strategy & Consulting': [
-    { label: 'Essential', description: '1 x 60-min Zoom session' },
-    { label: 'Enhanced', description: 'Business model + 1-week advisory' },
-    { label: 'Elite', description: '1-month consulting block' },
+    { label: 'Essential', description: '1 x 60-min strategy Zoom session' },
+    { label: 'Enhanced', description: 'Business model advisory (1-week support)' },
+    { label: 'Elite', description: 'Full month consulting block (weekly sessions + business review)' },
   ],
   'Drone Photography': [
-    { label: 'Essential', description: '30 min shoot + 5 photos + short clip' },
-    { label: 'Enhanced', description: 'Multi-location + edited promo' },
-    { label: 'Elite', description: 'Full shoot + 4K branded video' },
+    { label: 'Essential', description: '30-min drone shoot (5 photos + short 4K video)' },
+    { label: 'Enhanced', description: 'Multi-location drone shoot (edited promo reel)' },
+    { label: 'Elite', description: 'Full branded shoot (full-day, cinematic editing, 4K production)' },
   ],
 }
 
@@ -151,6 +152,7 @@ const selectedTiers = reactive({})
 const form = reactive({
   name: '',
   business: '',
+  phone: '',      // 🔥 New Field here
   email: '',
   location: '',
   budget: '',
