@@ -1,9 +1,12 @@
 <template>
   <section class="py-20 px-4 sm:px-8 lg:px-16 bg-beige min-h-screen">
-    <h1 class="text-4xl font-bold text-center mb-12">Our Services & Packages</h1>
+    <h1 class="text-4xl sm:text-5xl font-bold text-center mb-4">Our Services & Packages</h1>
+    <p class="text-center text-gray-600 max-w-3xl mx-auto mb-0">
+      Explore our tiered digital service bundles or choose à la carte solutions tailored to your business goals.
+    </p>
 
     <!-- 5-Tier Main Bundled Packages -->
-    <PricingSection class="mb-20" />
+    <PricingSection/>
 
     <!-- Build My Package Wizard CTA (after bundles) -->
     <div class="text-center mb-16 px-4">
@@ -14,23 +17,46 @@
       </div>
     </div>
 
-<!-- Individual Services (with Modals) -->
-<div
-  class="flex flex-row sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-4"
->
+    <!-- Mobile Build My Package CTA at top
+    <div class="sm:hidden text-center mb-10">
+      <h2 class="text-xl font-bold mb-2">Looking for something specific?</h2>
+      <p class="text-gray-600 mb-2 text-sm">
+        Select just one service or explore individual options that suit your current needs.
+      </p>
+      <AnimatedButton label="🛠️ Build Your Package" @click="showWizard = true" />
+    </div> -->
+
+<!-- Individual Services Subtitle -->
+<h2 class="text-2xl font-bold text-center mt-20 mb-4">
+  Browse Individual Services
+</h2>
+<p class="text-center text-gray-600 text-base mb-10">
+  Select one or more services that match your current project needs.
+</p>
+
+<!-- Scrollable Individual Services with Scroll Hint -->
+<div class="relative">
   <div
-    v-for="(service, index) in services"
-    :key="index"
-    class="snap-start min-w-[85vw] sm:min-w-0"
+    class="flex flex-row sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto sm:overflow-visible snap-x snap-mandatory pb-4"
   >
-    <ServiceCard
-      :title="service.title"
-      :icon="service.icon"
-      :description="service.description"
-      @open="selected = service"
-    />
+    <div
+      v-for="(service, index) in services"
+      :key="index"
+      class="snap-start min-w-[70vw] sm:min-w-0"
+    >
+      <ServiceCard
+        :title="service.title"
+        :icon="service.icon"
+        :description="service.description"
+        @open="selected = service"
+      />
+    </div>
   </div>
+
+  <!-- ✨ Right Fading Scroll Indicator (Mobile Only) -->
+  <div class="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-beige via-beige/60 to-transparent hidden sm:hidden"></div>
 </div>
+
 
     <!-- Modal with Dynamic Content -->
     <ServiceModal :isOpen="selected !== null" @close="selected = null">

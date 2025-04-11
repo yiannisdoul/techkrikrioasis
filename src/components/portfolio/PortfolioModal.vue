@@ -62,7 +62,7 @@
               <!-- 📝 Right: Info -->
               <div class="w-full md:w-1/2 overflow-y-auto text-left">
                 <h3 class="text-2xl font-bold text-[#D0008E] mb-2">{{ title }}</h3>
-                <p class="text-sm text-gray-700 mb-4">{{ description }}</p>
+                <p class="text-sm text-gray-700 mb-4" v-html="description"></p>
                 <a
                   v-if="link"
                   :href="link"
@@ -71,6 +71,19 @@
                 >
                   Visit Project →
                 </a>
+                <div v-if="socialLinks && socialLinks.length" class="flex gap-4 mt-4">
+                  <a
+                    v-for="(social, idx) in socialLinks"
+                    :key="idx"
+                    :href="social.url"
+                    target="_blank"
+                    class="text-2xl text-gray-500 hover:text-[#D0008E] transition"
+                  >
+                    <font-awesome-icon
+                      :icon="['fab', social.type]"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </transition>
@@ -88,6 +101,7 @@
     description: string;
     images: string[];
     link?: string;
+    socialLinks?: { type: string; url: string }[];
   }>();
   
   const emit = defineEmits(['close']);

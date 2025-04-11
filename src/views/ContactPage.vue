@@ -34,13 +34,13 @@
       Choose a time that suits you below — no strings attached.
     </p>
 
-    <!-- 🔽 Shorter responsive embed -->
-    <div class="relative pb-[57%] h-0 max-w-4xl mx-auto">
+    <!-- Updated Responsive Calendly Embed -->
+    <div class="w-full flex justify-center">
       <iframe
         src="https://calendly.com/yiannis-techkrikrioasis/free-discovery-call"
-        class="absolute top-0 left-0 w-full h-full rounded-xl border-none shadow-xl"
+        class="w-full max-w-3xl h-[750px] sm:h-[700px] md:h-[650px] lg:h-[600px] rounded-xl border-none shadow-xl"
         frameborder="0"
-        allowfullscreen
+        scrolling="no"
       ></iframe>
     </div>
   </div>

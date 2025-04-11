@@ -21,42 +21,61 @@
   </script>
    -->
 
-<template>
-<div class="bg-white rounded-xl shadow hover:shadow-lg transition-all p-4 cursor-pointer text-center portfolio-card" @click="onClick">
-    <img :src="cover" alt="Project cover" class="w-full h-40 object-cover rounded mb-4" />
-    <h3 class="text-[#D0008E] font-semibold text-lg mb-2">{{ title }}</h3>
-    <span
-    class="text-white text-xs px-3 py-1 rounded-full font-medium inline-block"
-    :style="{ backgroundColor: tagColors[category as keyof typeof tagColors] || '#333' }"
+   <template>
+    <div
+      class="bg-white rounded-xl shadow p-6 text-center hover:shadow-lg transition cursor-pointer border border-transparent hover:border-[#E85D04]"
+      @click="$emit('click')"
     >
-    {{ category }}
-    </span>
-</div>
-</template>
-
-<script setup lang="ts">
-defineProps<{
+      <img
+        :src="cover"
+        alt="Project cover"
+        class="h-40 w-full object-cover rounded-md mb-4"
+      />
+  
+      <h3 class="text-[#D0008E] font-semibold text-lg mb-2">{{ title }}</h3>
+  
+      <!-- Category Pills -->
+      <div class="flex flex-wrap justify-center gap-2 mt-2">
+        <span
+          v-for="(cat, index) in categories"
+          :key="index"
+          class="text-white text-xs px-2 py-1 rounded-full"
+          :style="{ backgroundColor: tagColors[cat] || '#ccc' }"
+        >
+          {{ cat }}
+        </span>
+      </div>
+    </div>
+  </template>
+  
+  <script setup lang="ts">
+  import { defineProps } from 'vue'
+  
+  // Props expected
+  defineProps<{
     title: string
     cover: string
-    category: string
-    onClick?: () => void
-}>()
-
-// reuse from parent color map
-const tagColors = {
+    categories: string[]
+  }>()
+  
+  // 🎨 Category Colors Map (same as PortfolioPage)
+  const tagColors: Record<string, string> = {
     'Web Development': '#D0008E',
     'Mobile App Development': '#E85D04',
-    'SEO': '#1F78B4',
-    'E-Commerce': '#FF9F1C',
-    'Digital Marketing': '#4CAF50',
-    'Drone Photography': '#7C3AED',
-    'Graphic Design': '#F43F5E',
-    'Strategy & Consulting': '#0D9488',
-}
-</script>
-
-<style scoped>
-    .portfolio-card {
-        min-height: 300px;
-    }
-</style>
+    'SEO': '#0077B6',
+    'E-Commerce': '#FFA500',
+    'Digital Marketing': '#52B788',
+    'Drone Photography': '#7B2CBF',
+    'Graphic Design': '#E63946',
+    'Strategy & Consulting': '#008080',
+  }
+  </script>
+  
+  <style scoped>
+  /* Optional slight hover lift */
+  div:hover {
+    transform: translateY(-2px);
+    transition: transform 0.3s ease;
+  }
+  </style>
+  

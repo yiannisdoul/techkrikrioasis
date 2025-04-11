@@ -58,10 +58,13 @@
               <input type="text" v-model="form.location" placeholder="Location (City + Country)" class="w-full border p-2 rounded" />
               <select v-model="form.budget" class="w-full border p-2 rounded">
                 <option disabled value="">Select Budget Range</option>
+                <option>Under $1,000</option>
+                <option>$1,000 – $2,500</option>
                 <option>$2,500 – $5,000</option>
                 <option>$5,000 – $10,000</option>
                 <option>$10,000 – $25,000</option>
-                <option>$25,000+</option>
+                <option>$25,000 – $50,000</option>
+                <option>$50,000+</option>
               </select>
               <textarea
                 v-model="form.notes"

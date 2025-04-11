@@ -1,7 +1,7 @@
 {
-  "name": "tech_kri_kri_oasis_rebuilt",
+  "name": "tech_kri_kri_oasis_rebuild",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.1.6",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.7.2",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
