@@ -51,8 +51,8 @@
                 <!-- ⬤ Dots -->
                 <div class="flex justify-center mt-3">
                   <span
-                    v-for="(img, idx) in images"
-                    :key="idx"
+                  v-for="(_, idx) in images"
+                  :key="idx"
                     class="w-2 h-2 mx-1 rounded-full transition-all duration-200"
                     :class="idx === currentIndex ? 'bg-[#E85D04]' : 'bg-gray-300'"
                   ></span>

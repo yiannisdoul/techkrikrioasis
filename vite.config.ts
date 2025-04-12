@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [vue(),  tailwindcss()],
   resolve: {
   alias: {
-    '@': path.resolve(__dirname, 'src'), // <== This adds the alias
+    '@': path.resolve(__dirname, './src'), // <== Alias for src
   },
 },
 })

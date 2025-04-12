@@ -34,8 +34,8 @@
               <label class="block font-semibold mb-2">{{ service }}</label>
               <div class="space-y-2">
                 <label
-                  v-for="tier in tiers[service]"
-                  :key="tier.label"
+                v-for="tier in tiers[service as keyof typeof tiers]"
+                :key="tier.label"
                   class="block text-sm text-gray-700"
                 >
                   <input
@@ -54,7 +54,7 @@
             <div class="space-y-4 border-t pt-6">
               <input type="text" v-model="form.name" placeholder="Full Name" class="w-full border p-2 rounded" />
               <input type="text" v-model="form.business" placeholder="Business Name" class="w-full border p-2 rounded" />
-              <input type="tel" v-model="form.phone" placeholder="Phone Number" class="w-full border p-2 rounded" /> <!-- 🔥 NEW FIELD -->
+              <input type="tel" v-model="form.phone" placeholder="Phone Number" class="w-full border p-2 rounded" />
               <input type="email" v-model="form.email" placeholder="Email Address" class="w-full border p-2 rounded" />
               <input type="text" v-model="form.location" placeholder="Location (City + Country)" class="w-full border p-2 rounded" />
               <select v-model="form.budget" class="w-full border p-2 rounded">
@@ -90,9 +90,25 @@
   </teleport>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { reactive, ref } from 'vue'
+import axios from 'axios'
+import { initializeApp } from "firebase/app"
+import { getFirestore, collection, addDoc } from "firebase/firestore"
 
+// Initialize Firebase (only for saving leads)
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
+
+// Form setup
 const services = [
   { name: 'Web Development', label: '🌐 Web Development' },
   { name: 'Mobile App Development', label: '📱 Mobile App Development' },
@@ -147,25 +163,78 @@ const tiers = {
   ],
 }
 
-const selectedServices = ref([])
-const selectedTiers = reactive({})
+const selectedServices = ref<string[]>([])
+const selectedTiers = reactive<Record<string, string>>({})
 const form = reactive({
   name: '',
   business: '',
-  phone: '',      // 🔥 New Field here
+  phone: '',
   email: '',
   location: '',
   budget: '',
   notes: '',
 })
 
-const submitForm = () => {
-  console.log('Quote submitted:', {
-    services: selectedServices.value,
-    tiers: selectedTiers,
-    details: form,
-  })
-  alert('Your quote request has been submitted!')
+// Send Email to Client
+async function sendEmail() {
+  try {
+    await axios.post(
+      'https://api.brevo.com/v3/smtp/email',
+      {
+        sender: {
+          name: "Tech Kri Kri Oasis",
+          email: "hello@techkrikrioasis.com.au", // ✅ Sender
+        },
+        to: [
+          {
+            email: form.email,
+            name: form.name,
+          }
+        ],
+        templateId: 2, // ✅ Build Your Package Template ID (#2)
+        params: {
+          fullName: form.name,
+          businessName: form.business,
+          phone: form.phone,
+          email: form.email,
+          location: form.location,
+          services: selectedServices.value.join(', '),
+          budgetRange: form.budget,
+          additionalInfo: form.notes,
+        },
+      },
+      {
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY, // ✅ API Key
+          'content-type': 'application/json',
+        },
+      }
+    )
+    console.log('Email sent successfully.')
+  } catch (error) {
+    console.error('Error sending email:', error)
+    alert('There was a problem sending the confirmation email.')
+  }
+}
+
+// Main Submit Form
+async function submitForm() {
+  try {
+    await addDoc(collection(db, "customQuotes"), {
+      services: selectedServices.value,
+      tiers: selectedTiers,
+      details: { ...form },
+      createdAt: new Date(),
+    })
+
+    await sendEmail()
+
+    alert('Your quote request has been submitted successfully!')
+  } catch (error) {
+    console.error('Error submitting form:', error)
+    alert('There was a problem submitting your form.')
+  }
 }
 </script>
 
@@ -178,7 +247,6 @@ const submitForm = () => {
 .fade-leave-to {
   opacity: 0;
 }
-
 .scale-enter-active,
 .scale-leave-active {
   transition: transform 0.25s ease;

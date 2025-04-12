@@ -21,7 +21,7 @@
                     <div>
                       <p class="font-medium">{{ addon.label }} <span class="text-gray-400">(+${{ addon.price }})</span></p>
                     </div>
-                    <select v-model.number="addonQuantities[addon.label]" class="input">
+                    <select v-model.number="addonQuantities[addon.label]" class="select-quantity">
                       <option v-for="n in 6" :key="n-1" :value="n-1">{{ n-1 }}</option>
                     </select>
                   </div>
@@ -65,8 +65,8 @@
                 <li><strong>Total:</strong> ${{ estimatedTotal }}</li>
               </ul>
 
-              <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg" @click="$emit('close')">
-                Finish & Close
+              <button class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg" @click="submitForm">
+                Finish & Submit
               </button>
             </div>
           </div>
@@ -78,6 +78,21 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import axios from 'axios'
+import { initializeApp } from "firebase/app";
+import { getFirestore, collection, addDoc } from "firebase/firestore"
+
+// Initialize Firebase (only for saving form data to Firestore)
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 interface Addon {
   label: string
@@ -90,7 +105,7 @@ const props = defineProps<{
   addons: Addon[]
 }>()
 
-defineEmits(['close'])
+const emit = defineEmits(['close'])
 
 const step = ref(1)
 
@@ -134,16 +149,97 @@ function nextStep() {
   }
   step.value = 2
 }
+
+// Function to send email via Brevo
+async function sendEmail() {
+  try {
+    await axios.post(
+      'https://api.brevo.com/v3/smtp/email',
+      {
+        sender: {
+          name: "Tech Kri Kri Oasis",
+          email: "hello@techkrikrioasis.com.au", 
+        },
+        to: [
+          {
+            email: form.value.email,
+            name: form.value.fullName,
+          }
+        ],
+        templateId: 1, // <-- Tiered Bundled Form Template ID (#1)
+        params: {
+          fullName: form.value.fullName,
+          businessName: form.value.businessName,
+          phone: form.value.phone,
+          email: form.value.email,
+          location: form.value.location,
+          addOns: finalSelectedAddons.value.map(a => a.nameWithQuantity).join(', '),
+          estimatedTotal: estimatedTotal.value,
+          package: props.title,
+        },
+      },
+      {
+        headers: {
+          'accept': 'application/json',
+          'api-key': import.meta.env.VITE_BREVO_API_KEY, 
+          'content-type': 'application/json',
+        },
+      }
+    );
+    console.log('Email sent successfully.');
+  } catch (error) {
+    console.error('Error sending email:', error);
+    alert('There was a problem sending the confirmation email.');
+  }
+}
+
+// Main form submission
+async function submitForm() {
+  try {
+    const docRef = await addDoc(collection(db, "leads"), {
+      package: props.title,
+      fullName: form.value.fullName,
+      businessName: form.value.businessName,
+      phone: form.value.phone,
+      email: form.value.email,
+      location: form.value.location,
+      addons: finalSelectedAddons.value.map(a => ({
+        label: a.label,
+        quantity: a.quantity,
+        price: a.price
+      })),
+      estimatedTotal: estimatedTotal.value,
+      createdAt: new Date(),
+    });
+    console.log("Document written with ID: ", docRef.id);
+
+    await sendEmail(); // <-- Send email after saving to Firestore
+
+    alert("Thank you! Your request has been submitted successfully.");
+    emit('close');
+
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("There was a problem submitting your form. Please try again later.");
+  }
+}
 </script>
 
 <style scoped lang="css">
 .input {
   width: 100%;
-  border: 1px solid #d1d5db; /* or another Tailwind-like color */
-  border-radius: 0.375rem; /* rounded-md */
-  padding-left: 0.75rem; /* px-3 */
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding-left: 0.75rem;
   padding-right: 0.75rem;
-  padding-top: 0.5rem; /* py-2 */
+  padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+.select-quantity {
+  width: 3rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  text-align: center;
 }
 </style>

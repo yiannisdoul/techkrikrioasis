@@ -25,16 +25,16 @@
           @touchstart="handleTouchStart"
           @touchend="handleTouchEnd"
         >
-          <PortfolioCard
-            v-for="(project, index) in projects"
-            :key="index"
-            class="portfolio-card w-[320px] flex-shrink-0"
-            :title="project.title"
-            :cover="project.cover"
-            :category="project.category"
-            :onClick="() => $emit('open', project)"
-          />
-        </div>
+        <PortfolioCard
+          v-for="(project, index) in projects"
+          :key="index"
+          class="portfolio-card w-[320px] flex-shrink-0"
+          :title="project.title"
+          :cover="project.cover"
+          :categories="[project.category]"
+          :onClick="() => $emit('open', project)"
+        />
+  </div>
   
         <!-- Scroll indicators -->
         <div class="flex justify-center mt-4 gap-2">
