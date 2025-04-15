@@ -6,7 +6,7 @@
           <div class="bg-white max-w-3xl w-full p-6 rounded-xl shadow-xl relative overflow-y-auto max-h-[90vh]" @keydown.esc="$emit('close')">
             <button class="absolute top-4 right-4 text-gray-500 hover:text-black" @click="$emit('close')">✕</button>
 
-            <!-- Step 1: Form -->
+            <!-- Step 1 -->
             <div v-if="step === 1">
               <h2 class="text-2xl font-bold mb-2 text-center">{{ title }}</h2>
               <p class="text-center mb-6 text-gray-600">
@@ -14,6 +14,7 @@
               </p>
 
               <form @submit.prevent="nextStep" class="space-y-6">
+
                 <!-- Add-ons -->
                 <div>
                   <h3 class="text-lg font-semibold text-gray-800 mb-3">Add-ons</h3>
@@ -31,12 +32,36 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input v-model="form.fullName" type="text" placeholder="Full Name" class="input" required />
                   <input v-model="form.businessName" type="text" placeholder="Business Name" class="input" />
-                  <input v-model="form.location" type="text" placeholder="City + Country" class="input" required />
-                  <input v-model="form.phone" type="tel" placeholder="Phone Number" class="input" required />
-                  <input v-model="form.email" type="email" placeholder="Email Address" class="input" required />
+
+                  <!-- Country Dropdown -->
+                  <select v-model="form.country" @change="updatePhoneMask" class="input" required>
+                    <option disabled value="">Select Country</option>
+                    <option v-for="(code, name) in countryList" :key="code" :value="name">{{ name }}</option>
+                  </select>
+
+                  <!-- City Manual Input -->
+                  <input v-model="form.city" type="text" placeholder="City" class="input" required />
+
+                  <!-- Phone -->
+                  <div class="flex gap-2">
+                    <select v-model="form.phoneCode" class="input w-1/3">
+                      <option v-for="(code, name) in countryCallingCodes" :key="name" :value="code">+{{ code }}</option>
+                    </select>
+                    <input
+                      v-model="form.phone"
+                      type="tel"
+                      class="input w-2/3"
+                      placeholder="Phone Number"
+                      required
+                      :maxlength="maxLength"
+                      @input="form.phone = form.phone.replace(/\D/g, '')"
+                    />
+                  </div>
+
+                  <input v-model="form.email" type="email" placeholder="Email Address" class="input sm:col-span-2" required />
                 </div>
 
-                <!-- Estimated Total -->
+                <!-- Total -->
                 <div class="mt-4 text-center">
                   <p class="text-xl font-bold text-orange-500">
                     Estimated Total: ${{ estimatedTotal }}
@@ -49,7 +74,7 @@
               </form>
             </div>
 
-            <!-- Step 2: Review -->
+            <!-- Step 2 -->
             <div v-else>
               <h3 class="text-xl font-bold mb-4">You're Almost Done!</h3>
               <p class="text-sm text-gray-600 mb-4">We'll contact you with a custom proposal based on your selections.</p>
@@ -58,9 +83,9 @@
                 <li><strong>Package:</strong> {{ title }}</li>
                 <li><strong>Full Name:</strong> {{ form.fullName }}</li>
                 <li><strong>Business Name:</strong> {{ form.businessName }}</li>
-                <li><strong>Phone Number:</strong> {{ form.phone }}</li>
+                <li><strong>Phone:</strong> +{{ form.phoneCode }} {{ form.phone }}</li>
                 <li><strong>Email:</strong> {{ form.email }}</li>
-                <li><strong>Location:</strong> {{ form.location }}</li>
+                <li><strong>Location:</strong> {{ form.city }}, {{ form.country }}</li>
                 <li><strong>Add-ons:</strong> {{ finalSelectedAddons.length ? finalSelectedAddons.map(a => a.nameWithQuantity).join(', ') : 'None' }}</li>
                 <li><strong>Total:</strong> ${{ estimatedTotal }}</li>
               </ul>
@@ -78,11 +103,11 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { initializeApp } from 'firebase/app'
+import { countries } from 'countries-list'
 import axios from 'axios'
-import { initializeApp } from "firebase/app";
-import { getFirestore, collection, addDoc } from "firebase/firestore"
 
-// Initialize Firebase (only for saving form data to Firestore)
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -90,21 +115,16 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+}
+const app = initializeApp(firebaseConfig)
+const db = getFirestore(app)
 
 interface Addon {
   label: string
   price: number
 }
 
-const props = defineProps<{
-  title: string
-  price: number
-  addons: Addon[]
-}>()
-
+const props = defineProps<{ title: string; price: number; addons: Addon[] }>()
 const emit = defineEmits(['close'])
 
 const step = ref(1)
@@ -112,134 +132,119 @@ const step = ref(1)
 const form = ref({
   fullName: '',
   businessName: '',
-  location: '',
   phone: '',
-  email: ''
+  phoneCode: '61',
+  email: '',
+  country: 'Australia',
+  city: '',
 })
 
 const addonQuantities = ref<Record<string, number>>({})
-
 props.addons.forEach(addon => {
   addonQuantities.value[addon.label] = 0
 })
 
-const finalSelectedAddons = computed(() => {
-  return props.addons
+const finalSelectedAddons = computed(() =>
+  props.addons
     .filter(addon => addonQuantities.value[addon.label] > 0)
     .map(addon => ({
       label: addon.label,
       quantity: addonQuantities.value[addon.label],
       price: addon.price,
-      nameWithQuantity: `${addon.label} (x${addonQuantities.value[addon.label]})`
+      nameWithQuantity: `${addon.label} (x${addonQuantities.value[addon.label]})`,
     }))
+)
+
+const estimatedTotal = computed(() =>
+  props.price + finalSelectedAddons.value.reduce((sum, a) => sum + a.price * a.quantity, 0)
+)
+
+const maxLength = computed(() => {
+  const code = form.value.phoneCode
+  return ['61', '1'].includes(code) ? 10 : 12
 })
 
-const estimatedTotal = computed(() => {
-  const addonsTotal = finalSelectedAddons.value.reduce(
-    (sum, addon) => sum + (addon.price * addon.quantity),
-    0
-  )
-  return props.price + addonsTotal
+const countryList = computed(() => {
+  return Object.entries(countries).reduce((acc, [code, value]) => {
+    acc[value.name] = code
+    return acc
+  }, {} as Record<string, string>)
 })
+
+const countryCallingCodes = computed(() => {
+  return Object.entries(countries).reduce((acc, [_, c]) => {
+    acc[c.name] = Array.isArray(c.phone) ? c.phone[0].toString() : '1'
+    return acc
+  }, {} as Record<string, string>)
+})
+
+function updatePhoneMask() {
+  form.value.phone = ''
+  form.value.phoneCode = countryCallingCodes.value[form.value.country] || '1'
+}
 
 function nextStep() {
-  if (!form.value.fullName || !form.value.phone || !form.value.email || !form.value.location) {
+  if (!form.value.fullName || !form.value.phone || !form.value.email || !form.value.country || !form.value.city) {
     alert('Please complete all required fields.')
     return
   }
   step.value = 2
 }
 
-// Function to send email via Brevo
-async function sendEmail() {
+async function submitForm() {
   try {
+    const fullPhone = `+${form.value.phoneCode} ${form.value.phone}`
+    const fullLocation = `${form.value.city}, ${form.value.country}`
+
+    await addDoc(collection(db, 'leads'), {
+      package: props.title,
+      ...form.value,
+      phone: fullPhone,
+      location: fullLocation,
+      addons: finalSelectedAddons.value,
+      estimatedTotal: estimatedTotal.value,
+      createdAt: new Date(),
+    })
+
     await axios.post(
       'https://api.brevo.com/v3/smtp/email',
       {
         sender: {
-          name: "Tech Kri Kri Oasis",
-          email: "hello@techkrikrioasis.com.au", 
+          name: 'Tech Kri Kri Oasis',
+          email: 'hello@techkrikrioasis.com.au',
         },
         to: [
-          {
-            email: form.value.email,
-            name: form.value.fullName,
-          }
+          { email: form.value.email, name: form.value.fullName }
         ],
-        templateId: 1, // <-- Tiered Bundled Form Template ID (#1)
+        bcc: [
+          { email: 'hello@techkrikrioasis.com.au', name: 'TK²O Notifications' }
+        ],
+        templateId: 2,
         params: {
           fullName: form.value.fullName,
           businessName: form.value.businessName,
-          phone: form.value.phone,
+          phone: fullPhone,
           email: form.value.email,
-          location: form.value.location,
-          addOns: finalSelectedAddons.value.map(a => a.nameWithQuantity).join(', '),
-          estimatedTotal: estimatedTotal.value,
-          package: props.title,
+          location: fullLocation,
+          budgetRange: `$${props.price.toLocaleString()}`,
+          services: props.title,
+          additionalInfo: finalSelectedAddons.value.map(a => a.nameWithQuantity).join(', ') || 'None',
         },
       },
       {
         headers: {
           'accept': 'application/json',
-          'api-key': import.meta.env.VITE_BREVO_API_KEY, 
+          'api-key': import.meta.env.VITE_BREVO_API_KEY,
           'content-type': 'application/json',
         },
       }
-    );
-    console.log('Email sent successfully.');
+    )
+
+    alert('✅ Thank you! Your request has been submitted.')
+    emit('close')
   } catch (error) {
-    console.error('Error sending email:', error);
-    alert('There was a problem sending the confirmation email.');
-  }
-}
-
-// Main form submission
-async function submitForm() {
-  try {
-    const docRef = await addDoc(collection(db, "leads"), {
-      package: props.title,
-      fullName: form.value.fullName,
-      businessName: form.value.businessName,
-      phone: form.value.phone,
-      email: form.value.email,
-      location: form.value.location,
-      addons: finalSelectedAddons.value.map(a => ({
-        label: a.label,
-        quantity: a.quantity,
-        price: a.price
-      })),
-      estimatedTotal: estimatedTotal.value,
-      createdAt: new Date(),
-    });
-    console.log("Document written with ID: ", docRef.id);
-
-    await sendEmail(); // <-- Send email after saving to Firestore
-
-    alert("Thank you! Your request has been submitted successfully.");
-    emit('close');
-
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("There was a problem submitting your form. Please try again later.");
+    console.error(error)
+    alert('❌ There was a problem submitting your form. Please try again.')
   }
 }
 </script>
-
-<style scoped lang="css">
-.input {
-  width: 100%;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-.select-quantity {
-  width: 3rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.375rem;
-  padding: 0.25rem 0.5rem;
-  text-align: center;
-}
-</style>

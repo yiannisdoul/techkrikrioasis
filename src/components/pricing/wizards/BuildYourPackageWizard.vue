@@ -3,86 +3,107 @@
     <transition name="fade">
       <div class="fixed inset-0 z-50 flex items-center justify-center px-4 bg-black/60" @click.self="$emit('close')">
         <transition name="scale">
-          <div
-            class="bg-white max-w-3xl w-full p-6 rounded-xl shadow-xl relative overflow-y-auto max-h-[90vh]"
-            @keydown.esc="$emit('close')"
-          >
-            <!-- Close Button -->
+          <div class="bg-white max-w-3xl w-full p-6 rounded-xl shadow-xl relative overflow-y-auto max-h-[90vh]" @keydown.esc="$emit('close')">
+
             <button class="absolute top-4 right-4 text-gray-500 hover:text-black" @click="$emit('close')">✕</button>
 
-            <!-- Header -->
-            <h2 class="text-2xl font-bold mb-2">Build Your Package</h2>
-            <p class="mb-6 text-gray-600">Select the services you need and choose a tier for each.</p>
+            <!-- Step 1: Fill Form -->
+            <div v-if="step === 1">
+              <h2 class="text-2xl font-bold mb-2">Build Your Package</h2>
+              <p class="mb-6 text-gray-600">Select the services you need and choose a tier for each.</p>
 
-            <!-- Step 1: Services -->
-            <div class="mb-6">
-              <label class="font-semibold mb-2 block">Which services are you interested in?</label>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <label
-                  v-for="(service, index) in services"
-                  :key="index"
-                  class="flex items-center gap-2 text-sm text-gray-700"
-                >
-                  <input type="checkbox" v-model="selectedServices" :value="service.name" />
-                  {{ service.label }}
-                </label>
+              <!-- Services -->
+              <div class="mb-6">
+                <label class="font-semibold mb-2 block">Which services are you interested in?</label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <label v-for="(service, index) in services" :key="index" class="flex items-center gap-2 text-sm text-gray-700">
+                    <input type="checkbox" v-model="selectedServices" :value="service.name" />
+                    {{ service.label }}
+                  </label>
+                </div>
               </div>
-            </div>
 
-            <!-- Step 2: Tiers -->
-            <div v-for="service in selectedServices" :key="service" class="mb-6 border-t pt-4">
-              <label class="block font-semibold mb-2">{{ service }}</label>
-              <div class="space-y-2">
-                <label
-                v-for="tier in tiers[service as keyof typeof tiers]"
-                :key="tier.label"
-                  class="block text-sm text-gray-700"
-                >
+              <!-- Tiers -->
+              <div v-for="service in selectedServices" :key="service" class="mb-6 border-t pt-4">
+                <label class="block font-semibold mb-2">{{ service }}</label>
+                <div class="space-y-2">
+                  <label v-for="tier in tiers[service as keyof typeof tiers]" :key="tier.label" class="block text-sm text-gray-700">
+                    <input type="radio" :name="service" v-model="selectedTiers[service]" :value="tier.label" class="mr-2" />
+                    <strong>{{ tier.label }}:</strong> {{ tier.description }}
+                  </label>
+                </div>
+              </div>
+
+              <!-- Contact Form -->
+              <div class="space-y-4 border-t pt-6">
+                <input v-model="form.name" type="text" placeholder="Full Name" class="w-full border p-2 rounded" />
+                <input v-model="form.business" type="text" placeholder="Business Name" class="w-full border p-2 rounded" />
+
+                <select v-model="form.country" @change="updatePhoneMask" class="w-full border p-2 rounded">
+                  <option disabled value="">Select Country</option>
+                  <option v-for="(code, name) in countryList" :key="code" :value="name">{{ name }}</option>
+                </select>
+
+                <input v-model="form.city" type="text" placeholder="City" class="w-full border p-2 rounded" />
+
+                <div class="flex gap-2">
+                  <select v-model="form.phoneCode" class="border p-2 rounded w-1/3">
+                    <option v-for="(code, name) in countryCallingCodes" :key="name" :value="code">+{{ code }}</option>
+                  </select>
                   <input
-                    type="radio"
-                    :name="service"
-                    v-model="selectedTiers[service]"
-                    :value="tier.label"
-                    class="mr-2"
+                    v-model="form.phone"
+                    type="tel"
+                    class="border p-2 rounded w-2/3"
+                    placeholder="Phone Number"
+                    :maxlength="maxLength"
+                    @input="form.phone = form.phone.replace(/\D/g, '')"
                   />
-                  <strong>{{ tier.label }}:</strong> {{ tier.description }}
-                </label>
+                </div>
+
+                <input v-model="form.email" type="email" placeholder="Email Address" class="w-full border p-2 rounded" />
+
+                <select v-model="form.budget" class="w-full border p-2 rounded">
+                  <option disabled value="">Select Budget Range</option>
+                  <option>Under $1,000</option>
+                  <option>$1,000 – $2,500</option>
+                  <option>$2,500 – $5,000</option>
+                  <option>$5,000 – $10,000</option>
+                  <option>$10,000 – $25,000</option>
+                  <option>$25,000 – $50,000</option>
+                  <option>$50,000+</option>
+                </select>
+
+                <textarea v-model="form.notes" placeholder="Anything else you'd like us to know?" class="w-full border p-2 rounded" />
+              </div>
+
+              <div class="mt-6 text-right">
+                <button @click="submitForm" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded">
+                  Submit
+                </button>
               </div>
             </div>
 
-            <!-- Step 3: Contact Form -->
-            <div class="space-y-4 border-t pt-6">
-              <input type="text" v-model="form.name" placeholder="Full Name" class="w-full border p-2 rounded" />
-              <input type="text" v-model="form.business" placeholder="Business Name" class="w-full border p-2 rounded" />
-              <input type="tel" v-model="form.phone" placeholder="Phone Number" class="w-full border p-2 rounded" />
-              <input type="email" v-model="form.email" placeholder="Email Address" class="w-full border p-2 rounded" />
-              <input type="text" v-model="form.location" placeholder="Location (City + Country)" class="w-full border p-2 rounded" />
-              <select v-model="form.budget" class="w-full border p-2 rounded">
-                <option disabled value="">Select Budget Range</option>
-                <option>Under $1,000</option>
-                <option>$1,000 – $2,500</option>
-                <option>$2,500 – $5,000</option>
-                <option>$5,000 – $10,000</option>
-                <option>$10,000 – $25,000</option>
-                <option>$25,000 – $50,000</option>
-                <option>$50,000+</option>
-              </select>
-              <textarea
-                v-model="form.notes"
-                placeholder="Anything else you'd like us to know?"
-                class="w-full border p-2 rounded"
-              />
-            </div>
+            <!-- Step 2: Confirmation Screen -->
+            <div v-else class="text-center p-8">
+              <h2 class="text-2xl font-bold mb-4">🎉 You're Almost Done!</h2>
+              <p class="text-gray-600 mb-6">We'll contact you with a custom proposal based on your selections.</p>
 
-            <!-- Submit -->
-            <div class="mt-6 text-right">
-              <button
-                @click="submitForm"
-                class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded"
-              >
-                Submit Quote Request
+              <ul class="text-left text-sm text-gray-700 space-y-2 mb-6">
+                <li><strong>Full Name:</strong> {{ form.name }}</li>
+                <li><strong>Business Name:</strong> {{ form.business }}</li>
+                <li><strong>Phone:</strong> +{{ form.phoneCode }} {{ form.phone }}</li>
+                <li><strong>Email:</strong> {{ form.email }}</li>
+                <li><strong>Location:</strong> {{ form.city }}, {{ form.country }}</li>
+                <li><strong>Budget:</strong> {{ form.budget }}</li>
+                <li><strong>Services:</strong> {{ selectedServices.join(', ') || 'None' }}</li>
+                <li><strong>Notes:</strong> {{ form.notes || 'None' }}</li>
+              </ul>
+
+              <button @click="finalSubmit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg">
+                Finish & Submit
               </button>
             </div>
+
           </div>
         </transition>
       </div>
@@ -91,12 +112,14 @@
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import axios from 'axios'
-import { initializeApp } from "firebase/app"
-import { getFirestore, collection, addDoc } from "firebase/firestore"
+import { initializeApp } from 'firebase/app'
+import { getFirestore, collection, addDoc } from 'firebase/firestore'
+import { countries } from 'countries-list'
 
-// Initialize Firebase (only for saving leads)
+const emit = defineEmits(['close'])
+
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
@@ -104,11 +127,12 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
   appId: import.meta.env.VITE_FIREBASE_APP_ID,
-};
+}
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-// Form setup
+const step = ref(1)
+
 const services = [
   { name: 'Web Development', label: '🌐 Web Development' },
   { name: 'Mobile App Development', label: '📱 Mobile App Development' },
@@ -162,93 +186,136 @@ const tiers = {
     { label: 'Elite', description: 'Full branded shoot (full-day, cinematic editing, 4K production)' },
   ],
 }
-
 const selectedServices = ref<string[]>([])
 const selectedTiers = reactive<Record<string, string>>({})
+
 const form = reactive({
   name: '',
   business: '',
   phone: '',
+  phoneCode: '61',
   email: '',
-  location: '',
+  country: 'Australia',
+  city: '',
   budget: '',
   notes: '',
 })
 
-// Send Email to Client
-async function sendEmail() {
+const countryList = computed(() => {
+  return Object.entries(countries).reduce((acc, [code, value]) => {
+    acc[value.name] = code
+    return acc
+  }, {} as Record<string, string>)
+})
+
+const countryCallingCodes = computed(() => {
+  return Object.entries(countries).reduce((acc, [_, c]) => {
+    acc[c.name] = Array.isArray(c.phone) ? c.phone[0].toString() : '1'
+    return acc
+  }, {} as Record<string, string>)
+})
+
+const maxLength = computed(() => {
+  const code = form.phoneCode
+  return ['61', '1'].includes(code) ? 10 : 12
+})
+
+function updatePhoneMask() {
+  form.phone = ''
+  form.phoneCode = countryCallingCodes.value[form.country] || '1'
+}
+
+function validateForm() {
+  if (!form.name || !form.phone || !form.email || !form.country || !form.city) {
+    alert('Please complete all required fields.')
+    return false
+  }
+  return true
+}
+
+async function submitForm() {
+  if (!validateForm()) return
+  step.value = 2
+}
+
+async function finalSubmit() {
   try {
-    await axios.post(
-      'https://api.brevo.com/v3/smtp/email',
-      {
-        sender: {
-          name: "Tech Kri Kri Oasis",
-          email: "hello@techkrikrioasis.com.au", // ✅ Sender
-        },
-        to: [
-          {
-            email: form.email,
-            name: form.name,
-          }
-        ],
-        templateId: 2, // ✅ Build Your Package Template ID (#2)
-        params: {
-          fullName: form.name,
-          businessName: form.business,
-          phone: form.phone,
-          email: form.email,
-          location: form.location,
-          services: selectedServices.value.join(', '),
-          budgetRange: form.budget,
-          additionalInfo: form.notes,
-        },
+    const docRef = await addDoc(collection(db, 'customQuotes'), {
+      services: selectedServices.value,
+      tiers: selectedTiers,
+      details: {
+        ...form,
+        phone: `+${form.phoneCode} ${form.phone}`,
+        location: `${form.city}, ${form.country}`,
       },
-      {
-        headers: {
-          'accept': 'application/json',
-          'api-key': import.meta.env.VITE_BREVO_API_KEY, // ✅ API Key
-          'content-type': 'application/json',
-        },
-      }
-    )
-    console.log('Email sent successfully.')
+      createdAt: new Date(),
+    })
+    console.log('🔥 Firebase saved with ID:', docRef.id)
+
+    const emailRes = await sendEmail()
+    console.log('📧 Email response:', emailRes.data)
+
+    alert('✅ Thank you! Your quote request has been submitted successfully.')
+    emit('close')
+
   } catch (error) {
-    console.error('Error sending email:', error)
-    alert('There was a problem sending the confirmation email.')
+    console.error('❌ Error submitting form or sending email:', error)
+    alert('❌ There was a problem submitting your form.')
   }
 }
 
-// Main Submit Form
-async function submitForm() {
-  try {
-    await addDoc(collection(db, "customQuotes"), {
-      services: selectedServices.value,
-      tiers: selectedTiers,
-      details: { ...form },
-      createdAt: new Date(),
-    })
-
-    await sendEmail()
-
-    alert('Your quote request has been submitted successfully!')
-  } catch (error) {
-    console.error('Error submitting form:', error)
-    alert('There was a problem submitting your form.')
-  }
+async function sendEmail() {
+  return axios.post(
+    'https://api.brevo.com/v3/smtp/email',
+    {
+      sender: {
+        name: 'Tech Kri Kri Oasis',
+        email: 'hello@techkrikrioasis.com.au',
+      },
+      to: [
+        {
+          email: form.email,
+          name: form.name,
+        }
+      ],
+      bcc: [
+        {
+          email: "hello@techkrikrioasis.com.au",
+          name: "TK²O Notifications",
+        }
+      ]
+      ,
+      templateId: 2,
+      params: {
+        fullName: form.name,
+        businessName: form.business,
+        phone: `+${form.phoneCode} ${form.phone}`,
+        email: form.email,
+        location: `${form.city}, ${form.country}`,
+        services: selectedServices.value.join(', '),
+        budgetRange: form.budget,
+        additionalInfo: form.notes,
+      },
+    },
+    {
+      headers: {
+        accept: 'application/json',
+        'api-key': import.meta.env.VITE_BREVO_API_KEY,
+        'content-type': 'application/json',
+      },
+    }
+  )
 }
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
+.fade-enter-active, .fade-leave-active {
   transition: opacity 0.3s ease;
 }
-.fade-enter-from,
-.fade-leave-to {
+.fade-enter-from, .fade-leave-to {
   opacity: 0;
 }
-.scale-enter-active,
-.scale-leave-active {
+.scale-enter-active, .scale-leave-active {
   transition: transform 0.25s ease;
 }
 .scale-enter-from {

@@ -1,13 +1,12 @@
 <template>
   <section
-    class="max-w-7xl mx-auto px-4 sm:px-6 md:px-10 py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left"
+    class="w-full px-4 sm:px-6 md:px-10 py-16 md:py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center text-center md:text-left"
     data-aos="fade-right"
   >
-    <!-- Left Content -->
     <div data-aos="fade-right" data-aos-duration="800">
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight">
-        Empowering Your Digital<br />
-        Transformation
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 leading-tight break-words">
+        Empowering Your<br />
+        Digital Transformation
       </h1>
       <p class="text-gray-600 text-base sm:text-lg mb-6">
         Backed by 10 years of combined sales and full-stack development experience, 
@@ -22,17 +21,16 @@
       </router-link>
     </div>
 
-    <!-- Right Image -->
-    <div class="flex justify-center md:justify-end" data-aos="fade-left" data-aos-duration="800">
+    <div class="flex justify-center md:justify-end" data-aos="zoom-in" data-aos-duration="800">
       <img
         src="@/assets/hero-illustration.png"
         alt="Hero illustration"
-        class="w-64 sm:w-72 md:w-full max-w-md"
+        class="w-56 sm:w-64 md:w-72 max-w-full h-auto"
       />
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-// No logic needed here
+// No logic needed
 </script>

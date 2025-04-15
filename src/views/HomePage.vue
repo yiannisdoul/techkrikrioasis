@@ -1,10 +1,12 @@
 <template>
-  <main class="bg-[#FDF8F3] text-[#1A1A1A]">
-    <HeroSection />
-    <ServicesSection />
-    <WhyUsSection />
-    <TestimonialsSection />
-  </main>
+  <div class="bg-[#fff8f1] min-h-screen pt-8 px-4 sm:px-6 md:px-10 text-[#1A1A1A]">
+    <div class="max-w-7xl mx-auto w-full">
+      <HeroSection />
+      <ServicesSection />
+      <WhyUsSection />
+      <TestimonialsSection />
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -15,7 +17,6 @@ import TestimonialsSection from '../components/sections/TestimonialsSection.vue'
 </script>
 
 <style scoped>
-/* Smooth fade-in scroll animation */
 [data-aos] {
   opacity: 0;
   transition: opacity 0.6s ease, transform 0.6s ease;
@@ -24,8 +25,6 @@ import TestimonialsSection from '../components/sections/TestimonialsSection.vue'
   opacity: 1;
   transform: none;
 }
-
-/* Vibrate/shake on hover */
 .card-hover:hover {
   animation: vibrate 0.3s linear;
 }
