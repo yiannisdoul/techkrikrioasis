@@ -1,7 +1,7 @@
 {
   "name": "tech_kri_kri_oasis_rebuild",
   "private": true,
-  "version": "2.0.1",
+  "version": "2.0.5",
   "type": "module",
   "scripts": {
     "dev": "vite",
