@@ -17,10 +17,10 @@ export const projects: PortfolioProject[] = [
       'In addition, we created a <strong>bespoke logo</strong> reflecting the brand\'s sophisticated identity and set up a full <strong>e-commerce platform</strong> to enable seamless online sales.\n\n' +
       'Each service — from <strong>branding</strong> to <strong>development</strong> to <strong>product imagery</strong> — was tailored to create a cohesive and memorable online experience for Home of Scent.',
     image: [
-      '/portfolio/home-of-scent-1.png', 
-      '/portfolio/home-of-scent-2.png', 
-      '/portfolio/home-of-scent-3.png',
-      '/portfolio/home-of-scent-4.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/home-of-scent-1.png', 
+      'https://assets.techkrikrioasis.com.au/portfolio/home-of-scent-2.png', 
+      'https://assets.techkrikrioasis.com.au/portfolio/home-of-scent-3.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/home-of-scent-4.png',
     ],
     liveLink: 'https://homeofscent.com.au/',
     socialLinks: [
@@ -39,9 +39,9 @@ export const projects: PortfolioProject[] = [
     'We also provided ongoing <strong>SEO optimization</strong> and <strong>digital strategy support</strong>, helping Bearcon attract new clients through organic search and carefully crafted social media marketing initiatives.\n\n' +
     'This all-in-one solution — from website development to content creation and online growth strategy — ensured Bearcon Building Services achieved a strong and credible online presence.',    
     image: [
-      '/portfolio/bearcon-building-services-1.png',
-      '/portfolio/bearcon-building-services-2.png',
-      '/portfolio/bearcon-building-services-3.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/bearcon-building-services-1.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/bearcon-building-services-2.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/bearcon-building-services-3.png',
     ],
     liveLink: 'https://bearconbs.com.au/',
     socialLinks: [
@@ -59,9 +59,9 @@ export const projects: PortfolioProject[] = [
     'To further strengthen their brand identity, we designed a bespoke <strong>logo</strong> along with custom <strong>graphics, icons, and imagery</strong> that are used throughout the website to visually reinforce trust, care, and professionalism.\n\n' +
     'This integrated solution ensured that Emphasis Care could confidently present their services online with a strong and credible image.',    
     image: [
-      '/portfolio/emphasis-care-services-1.png',
-      '/portfolio/emphasis-care-services-2.png',
-      '/portfolio/emphasis-care-services-3.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/emphasis-care-services-1.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/emphasis-care-services-2.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/emphasis-care-services-3.png',
     ],
     liveLink: 'https://emphasiscareservices.com.au/',
     socialLinks: [],
@@ -77,9 +77,9 @@ export const projects: PortfolioProject[] = [
     'Additionally, we created a distinctive <strong>logo</strong> and delivered custom <strong>graphics, icons, and imagery</strong> to reinforce their brand identity and communicate trust and reliability.\n\n' +
     'This complete solution positioned El Condor Cleaning Services as a trusted choice for those seeking exceptional cleaning outcomes.',    
     image: [
-      '/portfolio/el-condor-cleaning-services-1.png',
-      '/portfolio/el-condor-cleaning-services-2.png',
-      '/portfolio/el-condor-cleaning-services-3.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/el-condor-cleaning-services-1.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/el-condor-cleaning-services-2.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/el-condor-cleaning-services-3.png',
     ],
     liveLink: 'https://elcondorcleaningservices.com.au/',
     socialLinks: [],
@@ -95,7 +95,7 @@ export const projects: PortfolioProject[] = [
     'Alongside the creative assets, we delivered <strong>digital marketing</strong> and <strong>social media marketing</strong> services to drive engagement and attract new clients.\n\n' +
     'Although Andes Plumbing Group is <strong>no longer actively operating</strong>, we are proud of the work completed and the lasting impression created through this collaboration.',    
     image: [
-      '/portfolio/andes-plumbing-group.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/andes-plumbing-group.png',
     ],
     liveLink: 'https://andesplumbinggroup.com.au/',
     socialLinks: [
@@ -113,14 +113,14 @@ export const projects: PortfolioProject[] = [
     'To boost online visibility, our team implemented targeted <strong>SEO</strong> strategies that continue to drive organic traffic and improve search rankings.\n\n' +
     'Our engagement didn’t stop at launch — we continue to offer <strong>strategy and consulting</strong> services to support their ongoing growth and digital success.',    
     image: [
-      '/portfolio/3000-auto-spa-1.png',
-      '/portfolio/3000-auto-spa-2.png',
-      '/portfolio/3000-auto-spa-3.png',
-      '/portfolio/3000-auto-spa-4.png',
-      '/portfolio/3000-auto-spa-5.png',
-      '/portfolio/3000-auto-spa-6.png',
-      '/portfolio/3000-auto-spa-7.png',
-      '/portfolio/3000-auto-spa-8.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-1.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-2.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-3.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-4.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-5.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-6.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-7.png',
+      'https://assets.techkrikrioasis.com.au/portfolio/3000-auto-spa-8.png',
     ],
     liveLink: 'https://3000autospa.com.au/',
     socialLinks: [],

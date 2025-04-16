@@ -1,13 +1,13 @@
 // src/components/services/ServicesData.ts
 
-import webDevIcon from '@/assets/icons/web-dev.png'
-import mobileAppIcon from '@/assets/icons/mobile-app.png'
-import ecommerceIcon from '@/assets/icons/ecommerce.png'
-import seoIcon from '@/assets/icons/seo.png'
-import digitalMarketingIcon from '@/assets/icons/digital_marketing.png'
-import dronePhotographyIcon from '@/assets/icons/drone_photography.png'
-import graphicDesignIcon from '@/assets/icons/graphic_design.png'
-import strategyConsultingIcon from '@/assets/icons/strategy_consulting.png'
+import webDevIcon from 'https://assets.techkrikrioasis.com.au/icons/web-dev.png'
+import mobileAppIcon from 'https://assets.techkrikrioasis.com.au/icons/mobile-app.png'
+import ecommerceIcon from 'https://assets.techkrikrioasis.com.au/icons/ecommerce.png'
+import seoIcon from 'https://assets.techkrikrioasis.com.au/icons/seo.png'
+import digitalMarketingIcon from 'https://assets.techkrikrioasis.com.au/icons/digital-marketing.png'
+import dronePhotographyIcon from 'https://assets.techkrikrioasis.com.au/icons/drone-photography.png'
+import graphicDesignIcon from 'https://assets.techkrikrioasis.com.au/icons/graphic-design.png'
+import strategyConsultingIcon from 'https://assets.techkrikrioasis.com.au/icons/wstrategy-consulting.png'
 
 export const services = [
   {
