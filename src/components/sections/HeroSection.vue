@@ -23,7 +23,7 @@
 
     <div class="flex justify-center md:justify-end" data-aos="zoom-in" data-aos-duration="800">
       <img
-        src="@/assets/hero-illustration.png"
+        src="https://assets.techkrikrioasis.com.au/hero-illustration.png"
         alt="Hero illustration"
         class="w-56 sm:w-64 md:w-72 max-w-full h-auto"
       />

@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Wix vs WordPress? DIY vs Pro? How to Choose the Right Website Build for Your Melbourne Business in 2025',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?wix,wordpress,website,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/diy-vs-professional-website-2025.png',
   excerpt: 'Not sure if you need a custom website or a quick DIY builder? Here’s what Melbourne businesses should consider when choosing between platforms like Wix, Squarespace, and WordPress in 2025.',
   category: 'Web Design & UX'
 }

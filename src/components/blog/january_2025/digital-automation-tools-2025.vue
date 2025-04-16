@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Digital Automation in 2025: Tools Every Melbourne Business Should Be Using',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?automation,ai,workflow,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/digital-automation-tools-2025.png', 
   excerpt: 'Automation isn’t just for big corporations anymore. From AI inbox triage to automatic lead follow-ups, Melbourne’s small businesses are embracing digital workflows to scale faster with less effort.',
   category: 'Digital Strategy & Automation'
 }

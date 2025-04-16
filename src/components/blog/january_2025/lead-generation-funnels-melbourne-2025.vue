@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Lead Generation Funnels in 2025: How Melbourne Businesses Can Attract and Convert Customers on Autopilot',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?salesfunnel,conversion,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/lead-generation-funnels-melbourne-2025.png', 
   excerpt: 'If your business relies on clients, you need more than a contact form. Here’s how Melbourne service providers can build lead generation funnels that attract, nurture, and convert prospects automatically.',
   category: 'Marketing & Growth'
 }

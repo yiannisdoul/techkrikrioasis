@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Data Privacy in 2025: What Melbourne Businesses Must Know About Online Compliance',
   date: 'February 2025',
-  image: 'https://source.unsplash.com/featured/?privacy,gdpr,compliance,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/data-privacy-compliance-2025.png', 
   excerpt: 'A contact form isn’t just a form — it’s a legal responsibility. Here’s what Melbourne businesses need to know about data collection, cookie banners, and privacy best practices in 2025.',
   category: 'Cybersecurity & Tech Health'
 }

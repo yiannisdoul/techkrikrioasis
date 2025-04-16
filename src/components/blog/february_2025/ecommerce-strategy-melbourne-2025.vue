@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Ecommerce Strategy in 2025: How Melbourne Brands Can Build Stores That Sell',
   date: 'February 2025',
-  image: 'https://source.unsplash.com/featured/?ecommerce,shopify,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/ecommerce-strategy-melbourne-2025.png', 
   excerpt: 'In 2025, selling online isn’t just about having a shop — it’s about experience. Here’s how Melbourne ecommerce brands can design stores that look stunning and convert better.',
   category: 'E-Commerce & Online Sales'
 }

@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Service Pages That Sell: How to Build SEO Powerhouses for Your Melbourne Business in 2025',
   date: 'February 2025',
-  image: 'https://source.unsplash.com/featured/?seo,servicepage,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/seo-service-pages-melbourne-2025.png', 
   excerpt: 'Most Melbourne websites underperform because they skip one critical element: service pages. Here’s how to create high-ranking, conversion-driven pages for every offer you provide.',
   category: 'SEO & Search Strategy'
 }

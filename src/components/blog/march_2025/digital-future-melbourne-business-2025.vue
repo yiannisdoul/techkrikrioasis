@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Future-Proof Your Business: How Melbourne Brands Can Stay Digitally Competitive in 2025',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?future,business,technology,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/digital-future-melbourne-business-2025.png', 
   excerpt: 'The digital world moves fast. Here’s how Melbourne businesses can stay relevant, efficient, and competitive in 2025 — without feeling overwhelmed by constant tech change.',
   category: 'Digital Strategy & Automation'
 }

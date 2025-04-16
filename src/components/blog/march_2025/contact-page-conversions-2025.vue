@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Why Your Contact Page Is Costing You Leads in 2025 (And How to Fix It)',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?contact,form,website,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/contact-page-conversions-2025.png',
   excerpt: 'If your Contact page is just an afterthought, it’s likely losing you business. Here’s how Melbourne companies can design smarter, higher-converting forms in 2025.',
   category: 'Web Design & UX'
 }

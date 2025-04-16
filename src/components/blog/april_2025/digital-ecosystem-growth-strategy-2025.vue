@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Beyond the Website: How to Build a Digital Ecosystem That Grows with Your Business in 2025',
   date: 'April 2025',
-  image: 'https://source.unsplash.com/featured/?ecosystem,digital,growth,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/digital-ecosystem-growth-strategy-2025.png', 
   excerpt: 'A website alone isn’t enough in 2025. Melbourne businesses need a full digital ecosystem — from SEO to automation — working together to attract, convert, and retain customers.',
   category: 'Digital Strategy & Automation'
 }

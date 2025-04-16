@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Why Mobile Web Experience Will Make or Break Your Melbourne Business in 2025',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?mobile,ux,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/mobile-web-experience-melbourne-2025.png', 
   excerpt: 'In 2025, your mobile website is no longer a secondary channel — it’s the main event. Discover why poor mobile UX is costing Melbourne businesses and what to do about it.',
   category: 'Web Design & UX'
 }

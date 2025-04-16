@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'AI Content Strategy in 2025: How Melbourne Businesses Can Rank, Scale, and Build Trust',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?ai,writing,seo,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/ai-content-strategy-melbourne-2025.png', 
   excerpt: 'Content is still king — but in 2025, it’s wearing a crown coded by AI. Here’s how Melbourne businesses can use AI-powered writing tools to grow their audience and rank in search without losing authenticity.',
   category: 'Content & Branding'
 }

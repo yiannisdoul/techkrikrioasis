@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Landing Pages That Convert: How to Design High-Impact Campaign Pages in 2025',
   date: 'February 2025',
-  image: 'https://source.unsplash.com/featured/?landingpage,conversion,uiux',
+  image: 'https://assets.techkrikrioasis.com.au/blog/landing-page-strategy-2025.png', 
   excerpt: 'In 2025, your landing page is often the first and only chance to convert a visitor. Here’s how Melbourne businesses can design pages that are fast, focused, and built to convert.',
   category: 'Web Design & UX'
 }

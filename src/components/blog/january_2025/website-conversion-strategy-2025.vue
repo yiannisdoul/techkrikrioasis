@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Conversion Strategy in 2025: How to Turn Melbourne Website Visitors into Paying Customers',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?conversion,website,ux,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/website-conversion-strategy-2025.png', 
   excerpt: 'If your website is getting traffic but no sales, it’s not doing its job. Here’s how Melbourne businesses can boost conversions in 2025 by focusing on design, psychology, and trust.',
   category: 'Web Design & UX'
 }

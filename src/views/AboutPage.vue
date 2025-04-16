@@ -42,7 +42,7 @@
 
       <!-- Founder Info -->
       <div class="bg-white shadow-lg rounded-2xl p-6 sm:p-8 text-center space-y-4">
-        <img src="../assets/founder.png" alt="Founder" class="w-36 h-36 mx-auto rounded-full object-cover" />
+        <img src="https://assets.techkrikrioasis.com.au/founder.png" alt="Founder" class="w-36 h-36 mx-auto rounded-full object-cover" />
         <h2 class="text-2xl font-bold">Ioannis Doulgerakis</h2>
 
         <!-- LinkedIn -->

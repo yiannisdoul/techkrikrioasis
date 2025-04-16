@@ -106,9 +106,13 @@ const selectedCategory = ref('')
 const filteredPosts = computed(() =>
   allPosts.filter((post) => {
     const matchCat = selectedCategory.value === '' || post.category === selectedCategory.value
-    const matchSearch =
-      post.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
-      post.excerpt.toLowerCase().includes(searchQuery.value.toLowerCase())
+
+    const queryWords = searchQuery.value.toLowerCase().split(' ').filter(Boolean)
+    const matchSearch = queryWords.every(word =>
+      post.title.toLowerCase().includes(word) ||
+      post.excerpt.toLowerCase().includes(word)
+    )
+
     return matchCat && matchSearch
   })
 )

@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'How to Build a Scalable Website for Your Startup',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?website,startup',
+  image: 'https://assets.techkrikrioasis.com.au/blog/scalable-website.png',  
   excerpt: 'Scalability isn’t optional anymore. Learn how to plan your site for performance, SEO, and long-term growth.',
   category: 'Web Design & UX'
 }

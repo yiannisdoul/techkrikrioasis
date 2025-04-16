@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Turning Testimonials into Growth: Why Melbourne Businesses Should Use Reviews Smarter in 2025',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?reviews,testimonials,trust,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/client-testimonials-strategy-2025.png',
   excerpt: 'In 2025, reviews are your silent sales team. Here’s how Melbourne businesses can turn testimonials into conversion tools that build trust, boost SEO, and close more leads.',
   category: 'Marketing & Growth'
 }

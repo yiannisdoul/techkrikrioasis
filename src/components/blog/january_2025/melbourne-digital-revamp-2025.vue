@@ -11,7 +11,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Why 2025 Is the Year for Melbourne Businesses to Revamp Their Online Presence',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?melbourne,technology,digital',
+  image: 'https://assets.techkrikrioasis.com.au/blog/melbourne-digital-revamp-2025.png', 
   excerpt: '2025 is bringing a digital shake-up for Melbourne’s business landscape. Here’s why now is the time to revamp your website, sharpen your SEO, and embrace digital transformation.',
   category: 'Web Design & UX'
 }

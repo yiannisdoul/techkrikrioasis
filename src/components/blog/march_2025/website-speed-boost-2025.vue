@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Speed Matters: How to Make Your Melbourne Business Website Load Faster in 2025',
   date: 'March 2025',
-  image: 'https://source.unsplash.com/featured/?speed,website,seo,melbourne',
+  image: 'https://assets.techkrikrioasis.com.au/blog/website-speed-boost-2025.png',
   excerpt: 'Site speed directly impacts rankings, bounce rate, and conversions. Here’s how Melbourne businesses can fix slow websites in 2025 — and stop losing leads.',
   category: 'SEO & Search Strategy'
 }

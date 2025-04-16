@@ -10,8 +10,8 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Digital Branding in 2025: How Melbourne Businesses Can Build Trust Online from Day One',
   date: 'January 2025',
-  image: 'https://source.unsplash.com/featured/?branding,design,melbourne',
-excerpt: 'First impressions happen fast online. In 2025, Melbourne businesses need more than just a logo — they need a clear, consistent, and emotionally resonant digital brand. Here&apos;s how to build one that actually connects.',
+  image: 'https://assets.techkrikrioasis.com.au/blog/digital-brand-strategy-2025.png', 
+  excerpt: 'First impressions happen fast online. In 2025, Melbourne businesses need more than just a logo — they need a clear, consistent, and emotionally resonant digital brand. Here&apos;s how to build one that actually connects.',
   category: 'Content & Branding'
 }
 </script>
