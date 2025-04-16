@@ -1,18 +1,9 @@
 // src/components/services/ServicesData.ts
 
-import webDevIcon from 'https://assets.techkrikrioasis.com.au/icons/web-dev.png'
-import mobileAppIcon from 'https://assets.techkrikrioasis.com.au/icons/mobile-app.png'
-import ecommerceIcon from 'https://assets.techkrikrioasis.com.au/icons/ecommerce.png'
-import seoIcon from 'https://assets.techkrikrioasis.com.au/icons/seo.png'
-import digitalMarketingIcon from 'https://assets.techkrikrioasis.com.au/icons/digital-marketing.png'
-import dronePhotographyIcon from 'https://assets.techkrikrioasis.com.au/icons/drone-photography.png'
-import graphicDesignIcon from 'https://assets.techkrikrioasis.com.au/icons/graphic-design.png'
-import strategyConsultingIcon from 'https://assets.techkrikrioasis.com.au/icons/wstrategy-consulting.png'
-
 export const services = [
   {
     title: 'Mobile App Development',
-    icon: mobileAppIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/mobile-app.png',
     description: 'Android & iOS apps built for startups and businesses.',
     tiers: [
       {
@@ -44,7 +35,7 @@ export const services = [
   },
   {
     title: 'Web Development',
-    icon: webDevIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/web-dev.png',
     description: 'Custom websites built with WordPress or code from scratch.',
     tiers: [
       {
@@ -75,7 +66,7 @@ export const services = [
   },
   {
     title: 'E-Commerce',
-    icon: ecommerceIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/ecommerce.png',
     description: 'Online stores that convert, on Shopify, WooCommerce, or custom.',
     tiers: [
       {
@@ -106,7 +97,7 @@ export const services = [
   },
   {
     title: 'SEO',
-    icon: seoIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/seo.png',
     description: 'Rank your website locally and nationally with smart SEO.',
     tiers: [
       {
@@ -137,7 +128,7 @@ export const services = [
   },
   {
     title: 'Digital Marketing',
-    icon: digitalMarketingIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/digital-marketing.png',
     description: 'We drive traffic with smart Google Ads and Meta campaigns.',
     tiers: [
       {
@@ -168,7 +159,7 @@ export const services = [
   },
   {
     title: 'Drone Photography (Only in Melbourne)',
-    icon: dronePhotographyIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/drone-photography.png',
     description: 'Capture property or events with stunning drone shots.',
     tiers: [
       {
@@ -199,7 +190,7 @@ export const services = [
   },
   {
     title: 'Graphic Design',
-    icon: graphicDesignIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/graphic-design.png',
     description: 'Visuals that speak your brand: logos, kits & more.',
     tiers: [
       {
@@ -230,7 +221,7 @@ export const services = [
   },
   {
     title: 'Strategy & Consulting',
-    icon: strategyConsultingIcon,
+    icon: 'https://assets.techkrikrioasis.com.au/icons/wstrategy-consulting.png',
     description: 'Business & tech consulting with ROI-first mindset.',
     tiers: [
       {
