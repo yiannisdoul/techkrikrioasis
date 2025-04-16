@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Top AI Design Tools to Watch in 2025',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/ai-tools-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/ai-tools-2025.webp', 
   excerpt: 'AI is transforming design. Here are the top tools revolutionizing UX/UI in 2025...',
   category: 'Digital Strategy & Automation'
 }

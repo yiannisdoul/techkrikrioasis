@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'How to Build Trust With Your Website in 5 Seconds (Melbourne Edition, 2025)',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/build-trust-website-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/build-trust-website-2025.webp', 
   excerpt: 'Your website has five seconds to make a strong first impression. In 2025, Melbourne customers judge credibility fast. Here’s how to build trust instantly — and why most businesses fail.',
   category: 'Web Design & UX'
 }

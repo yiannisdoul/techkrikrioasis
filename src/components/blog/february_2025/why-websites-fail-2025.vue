@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Why Most Websites Fail in 2025 (And What Melbourne Businesses Can Do Differently)',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/why-websites-fail-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/why-websites-fail-2025.webp', 
   excerpt: 'If your website looks good but still isn’t generating leads or sales, it’s not working. Here’s why most Melbourne websites fall flat — and how to fix it with conversion-first strategy.',
   category: 'Web Design & UX'
 }

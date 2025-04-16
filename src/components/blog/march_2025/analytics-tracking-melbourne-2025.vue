@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Data Doesn’t Lie: Why Melbourne Businesses Need Better Website Tracking in 2025',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/analytics-tracking-melbourne-2025.png',
+  image: 'https://assets.techkrikrioasis.com.au/blog/analytics-tracking-melbourne-2025.webp',
   excerpt: 'Guesswork is expensive. Here’s how Melbourne businesses can use smart analytics and tracking to improve websites, campaigns, and customer journeys in 2025.',
   category: 'Marketing & Growth'
 }

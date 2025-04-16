@@ -3,7 +3,7 @@
 export const services = [
   {
     title: 'Mobile App Development',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/mobile-app.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/mobile-app.webp',
     description: 'Android & iOS apps built for startups and businesses.',
     tiers: [
       {
@@ -35,7 +35,7 @@ export const services = [
   },
   {
     title: 'Web Development',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/web-dev.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/web-dev.webp',
     description: 'Custom websites built with WordPress or code from scratch.',
     tiers: [
       {
@@ -66,7 +66,7 @@ export const services = [
   },
   {
     title: 'E-Commerce',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/ecommerce.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/ecommerce.webp',
     description: 'Online stores that convert, on Shopify, WooCommerce, or custom.',
     tiers: [
       {
@@ -97,7 +97,7 @@ export const services = [
   },
   {
     title: 'SEO',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/seo.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/seo.webp',
     description: 'Rank your website locally and nationally with smart SEO.',
     tiers: [
       {
@@ -128,7 +128,7 @@ export const services = [
   },
   {
     title: 'Digital Marketing',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/digital-marketing.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/digital_marketing.webp',
     description: 'We drive traffic with smart Google Ads and Meta campaigns.',
     tiers: [
       {
@@ -159,7 +159,7 @@ export const services = [
   },
   {
     title: 'Drone Photography (Only in Melbourne)',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/drone-photography.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/drone_photography.webp',
     description: 'Capture property or events with stunning drone shots.',
     tiers: [
       {
@@ -190,7 +190,7 @@ export const services = [
   },
   {
     title: 'Graphic Design',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/graphic-design.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/graphic_design.webp',
     description: 'Visuals that speak your brand: logos, kits & more.',
     tiers: [
       {
@@ -198,7 +198,7 @@ export const services = [
         headline: '👉 Great for new startups or solo brands', 
         features: [
           '🎨 Logo · Colors · Fonts',
-          '✅ Print-ready, favicon & PNGs',
+          '✅ Print-ready, favicon & webps',
         ],
       },
       {
@@ -221,7 +221,7 @@ export const services = [
   },
   {
     title: 'Strategy & Consulting',
-    icon: 'https://assets.techkrikrioasis.com.au/icons/wstrategy-consulting.png',
+    icon: 'https://assets.techkrikrioasis.com.au/icons/strategy_consulting.webp',
     description: 'Business & tech consulting with ROI-first mindset.',
     tiers: [
       {

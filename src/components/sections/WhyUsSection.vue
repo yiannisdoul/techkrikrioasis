@@ -33,19 +33,13 @@
 </template>
 
 <script setup lang="ts">
-import humanCentricIcon from '@/assets/icons/human-centric.png';
-import transparentDeliveryIcon from '@/assets/icons/transparent-delivery.png';
-import speedIcon from '@/assets/icons/speed.png';
-import roiIcon from '@/assets/icons/roi.png';
-import pricingIcon from '@/assets/icons/pricing.png';
-import toolsIcon from '@/assets/icons/tools.png';
 
 const features = [
-  { title: 'Human-Centric Design', text: 'We focus on intuitive UI/UX that makes your users stick and stay.', icon: humanCentricIcon },
-  { title: 'ROI-Focused Strategy', text: 'Our services are designed to deliver ROI on investment.', icon: roiIcon },
-  { title: 'Affordable Pricing', text: 'Transparent plans that support startups and SMEs.', icon: pricingIcon },
-  { title: 'Full Tech Stack', text: 'From front-end to back-end, we deliver end-to-end builds.', icon: toolsIcon },
-  { title: 'Fast Turnaround', text: 'We prioritize speed without sacrificing quality or support.', icon: speedIcon },
-  { title: 'Transparent Delivery', text: 'No fluff, no hidden scope — just real, milestone-driven results.', icon: transparentDeliveryIcon },
+  { title: 'Human-Centric Design', text: 'We focus on intuitive UI/UX that makes your users stick and stay.', icon: 'https://assets.techkrikrioasis.com.au/icons/human-centric.webp' },
+  { title: 'ROI-Focused Strategy', text: 'Our services are designed to deliver ROI on investment.', icon: 'https://assets.techkrikrioasis.com.au/icons/roi.webp' },
+  { title: 'Affordable Pricing', text: 'Transparent plans that support startups and SMEs.', icon: 'https://assets.techkrikrioasis.com.au/icons/pricing.webp' },
+  { title: 'Full Tech Stack', text: 'From front-end to back-end, we deliver end-to-end builds.', icon: 'https://assets.techkrikrioasis.com.au/icons/tools.webp' },
+  { title: 'Fast Turnaround', text: 'We prioritize speed without sacrificing quality or support.', icon: 'https://assets.techkrikrioasis.com.au/icons/speed.webp' },
+  { title: 'Transparent Delivery', text: 'No fluff, no hidden scope — just real, milestone-driven results.', icon: 'https://assets.techkrikrioasis.com.au/icons/transparent-delivery.webp' },
 ];
 </script>

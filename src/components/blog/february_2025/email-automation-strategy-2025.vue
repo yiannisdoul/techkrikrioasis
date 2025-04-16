@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Email Automation in 2025: How Melbourne Businesses Can Turn Leads into Long-Term Clients',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/email-automation-strategy-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/email-automation-strategy-2025.webp', 
   excerpt: 'Email isn’t dead — it’s evolving. In 2025, smart Melbourne businesses are using automation to guide leads, build loyalty, and stay top of mind. Here’s how to do it without sounding like a robot.',
   category: 'Marketing & Growth'
 }

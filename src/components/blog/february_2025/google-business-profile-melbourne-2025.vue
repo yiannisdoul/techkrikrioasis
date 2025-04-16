@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Google Business Profile in 2025: How Melbourne Businesses Can Win More Local Leads',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/google-business-profile-melbourne-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/google-business-profile-melbourne-2025.webp', 
   excerpt: 'Local search is more competitive than ever. Here’s how Melbourne businesses can fully optimize their Google Business Profile in 2025 and show up where it counts — on Maps and in the top 3 local listings.',
   category: 'SEO & Search Strategy'
 }

@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Site Speed in 2025: Why a Fast Website is the Best Investment for Your Melbourne Business',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/site-speed-performance-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/site-speed-performance-2025.webp', 
   excerpt: 'Slow websites are silent killers. In 2025, speed directly affects your Google rankings, bounce rates, and bottom line. Here’s how Melbourne businesses can boost performance — and why it matters more than ever.',
   category: 'Web Design & UX'
 }

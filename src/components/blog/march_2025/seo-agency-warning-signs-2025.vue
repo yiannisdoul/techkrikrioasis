@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'The Truth About SEO in 2025: Why Most Agencies Don’t Deliver (And What Melbourne Businesses Can Do Instead)',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/seo-agency-warning-signs-2025.png',
+  image: 'https://assets.techkrikrioasis.com.au/blog/seo-agency-warning-signs-2025.webp',
   excerpt: 'SEO is still powerful in 2025 — but only when done right. Here\'s why many Melbourne businesses feel burned by their agency, and how to choose an SEO partner that actually delivers.',
   category: 'SEO & Search Strategy'
 }

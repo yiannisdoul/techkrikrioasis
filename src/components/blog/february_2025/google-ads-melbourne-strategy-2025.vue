@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Google Ads in 2025: How Melbourne Service Businesses Can Stop Wasting Budget and Start Getting Leads',
   date: 'February 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/google-ads-melbourne-strategy-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/google-ads-melbourne-strategy-2025.webp', 
   excerpt: 'If your Google Ads aren\'t converting, you\'re not alone. Here\'s how Melbourne service businesses can avoid common mistakes, target the right keywords, and actually get a return in 2025.',
   category: 'Marketing & Growth'
 }

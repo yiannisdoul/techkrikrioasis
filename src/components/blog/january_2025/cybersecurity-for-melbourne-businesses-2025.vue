@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Cybersecurity in 2025: What Every Melbourne Business Needs to Know to Stay Safe Online',
   date: 'January 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/cybersecurity-for-melbourne-businesses-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/cybersecurity-for-melbourne-businesses-2025.webp', 
   excerpt: 'Cyber threats in 2025 are more sophisticated than ever — and small businesses are often the weakest link. Here’s how to protect your Melbourne business with practical, no-nonsense cybersecurity tips.',
   category: 'Cybersecurity & Tech Health'
 }

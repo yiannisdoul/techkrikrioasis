@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'What Makes a Great Homepage in 2025? The Anatomy of High-Converting Sites for Melbourne Brands',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/great-homepage-structure-2025.png',
+  image: 'https://assets.techkrikrioasis.com.au/blog/great-homepage-structure-2025.webp',
   excerpt: 'Your homepage is your first impression. Here’s how Melbourne businesses can structure a modern, conversion-ready homepage in 2025 — with clarity, trust, and action in mind.',
   category: 'Web Design & UX'
 }

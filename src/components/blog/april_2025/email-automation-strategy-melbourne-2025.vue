@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'From Inbox to Income: How Melbourne Businesses Can Win with Email Automation in 2025',
   date: 'April 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/email-automation-strategy-melbourne-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/email-automation-strategy-melbourne-2025.webp', 
   excerpt: 'Email marketing still delivers one of the highest ROIs in 2025 — but only if it\'s automated and strategic. Here\'s how Melbourne businesses can build systems that convert leads into loyal clients.',
   category: 'Marketing & Growth'
 }

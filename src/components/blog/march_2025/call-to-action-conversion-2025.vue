@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Call to Action, Not Confusion: How to Get More Website Leads with Better CTAs in 2025',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/call-to-action-conversion-2025.png',
+  image: 'https://assets.techkrikrioasis.com.au/blog/call-to-action-conversion-2025.webp',
   excerpt: 'If your website traffic isn’t turning into enquiries, your CTA might be to blame. Here’s how Melbourne brands can craft smarter, clearer calls to action in 2025.',
   category: 'Web Design & UX'
 }

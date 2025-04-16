@@ -11,7 +11,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Melbourne SEO Trends 2025: What Local Businesses Must Know to Stay on Top',
   date: 'January 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/melbourne-seo-trends-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/melbourne-seo-trends-2025.webp', 
   excerpt: 'Google’s 2025 update is shaking up local search. Here’s how Melbourne businesses can adapt to dominate SEO this year — and why traditional strategies aren’t enough.',
   category: 'SEO & Search Strategy'
 }

@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Do You Need a Mobile App in 2025? Why More Melbourne Businesses Are Going Mobile',
   date: 'March 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/mobile-apps-melbourne-business-2025.png',
+  image: 'https://assets.techkrikrioasis.com.au/blog/mobile-apps-melbourne-business-2025.webp',
   excerpt: 'In 2025, mobile apps aren’t just for big tech brands. Here’s why more Melbourne businesses — from cafes to consultants — are launching their own apps to boost loyalty, bookings, and user engagement.',
   category: 'Web Design & UX'
 }

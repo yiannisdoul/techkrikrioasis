@@ -10,7 +10,7 @@ export type BlogMeta = {
 export const blogMeta: BlogMeta = {
   title: 'Website Maintenance in 2025: Why Melbourne Businesses Can’t Afford to Neglect Site Health',
   date: 'January 2025',
-  image: 'https://assets.techkrikrioasis.com.au/blog/website-maintenance-melbourne-2025.png', 
+  image: 'https://assets.techkrikrioasis.com.au/blog/website-maintenance-melbourne-2025.webp', 
   excerpt: 'A website isn’t a one-and-done project. In 2025, Melbourne businesses that skip maintenance risk slower speeds, lower rankings, and security threats. Here’s how to stay protected and performing year-round.',
   category: 'Cybersecurity & Tech Health'
 }
