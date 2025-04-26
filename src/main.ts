@@ -1,4 +1,5 @@
 import { createApp } from 'vue';
+import { createPinia } from 'pinia'; // Import Pinia
 import App from './App.vue';
 import router from './router';
 
@@ -17,11 +18,15 @@ AOS.init({
 import { MotionPlugin } from '@vueuse/motion'
 
 const app = createApp(App);
+
+// Initialize Pinia
+const pinia = createPinia();
+app.use(pinia);
+
 app.use(router);
-app.use(MotionPlugin)
-app.mount('#app');
+app.use(MotionPlugin);
 
-
+// Import FontAwesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import {
@@ -34,3 +39,6 @@ import {
 library.add(faFacebook, faXTwitter, faLinkedin, faInstagram);
 
 app.component('font-awesome-icon', FontAwesomeIcon);
+
+// Mount the app after all plugins are registered
+app.mount('#app');

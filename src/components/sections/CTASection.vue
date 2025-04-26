@@ -1,8 +1,11 @@
 <template>
   <section
-    class="pt-16 sm:pt-20 pb-12 px-4 sm:px-6 md:px-10 text-center bg-[#E85D04] text-white"
+    class="pt-16 sm:pt-20 pb-12 px-4 sm:px-6 md:px-10 text-center text-white"
     data-aos="fade-up"
     data-aos-duration="800"
+    :style="{
+      backgroundColor: themeStore.isDarkMode ? '#FF7E33' : '#E85D04'
+    }"
   >
     <div class="max-w-3xl mx-auto">
       <h2 class="text-2xl sm:text-3xl font-bold mb-4 leading-tight">
@@ -14,7 +17,11 @@
 
       <router-link
         to="/contact"
-        class="inline-block bg-white text-[#E85D04] font-semibold px-6 py-3 rounded-md hover:bg-[#FDF8F3] transition text-sm sm:text-base animate-pulse"
+        class="inline-block font-semibold px-6 py-3 rounded-md transition text-sm sm:text-base animate-pulse"
+        :style="{
+          backgroundColor: 'white',
+          color: themeStore.isDarkMode ? '#FF7E33' : '#E85D04'
+        }"
       >
         Book a Free Call
       </router-link>
@@ -23,5 +30,7 @@
 </template>
 
 <script setup lang="ts">
-// No logic needed
+import { useThemeStore } from '../../stores/ThemeStore';
+
+const themeStore = useThemeStore();
 </script>
