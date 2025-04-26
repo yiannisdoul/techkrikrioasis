@@ -1,9 +1,24 @@
 <template>
-  <div class="bg-[#FFF8F2] pt-20">
+  <div 
+    class="pt-20"
+    :style="{
+      backgroundColor: themeStore.isDarkMode ? '#121212' : '#FFF8F2' 
+    }"
+  >
     <!-- Header -->
     <section class="px-6 sm:px-10 pb-6 text-center">
-      <h1 class="text-3xl sm:text-4xl font-bold mb-2 text-gray-900">Latest Blog Posts</h1>
-      <p class="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+      <h1 
+        class="text-3xl sm:text-4xl font-bold mb-2"
+        :style="{
+          color: themeStore.isDarkMode ? '#FFFFFF' : '#1A1A1A'
+        }"
+      >Latest Blog Posts</h1>
+      <p 
+        class="text-sm sm:text-base max-w-2xl mx-auto"
+        :style="{
+          color: themeStore.isDarkMode ? '#9CA3AF' : '#4B5563'
+        }"
+      >
         Insights, tutorials, and case studies from the Tech Kri-Kri Oasis team.
       </p>
     </section>
@@ -15,11 +30,28 @@
         type="text"
         placeholder="Search posts..."
         class="px-4 py-2 rounded-md border text-sm w-64 shadow-sm"
+        :style="{
+          backgroundColor: themeStore.isDarkMode ? '#1E1E1E' : 'white',
+          borderColor: themeStore.isDarkMode ? '#2D3748' : '#E5E7EB',
+          color: themeStore.isDarkMode ? '#E2E8F0' : 'inherit'
+        }"
       />
 
-      <select v-model="selectedCategory" class="px-4 py-2 rounded-md border text-sm shadow-sm">
+      <select 
+        v-model="selectedCategory" 
+        class="px-4 py-2 rounded-md border text-sm shadow-sm"
+        :style="{
+          backgroundColor: themeStore.isDarkMode ? '#1E1E1E' : 'white',
+          borderColor: themeStore.isDarkMode ? '#2D3748' : '#E5E7EB',
+          color: themeStore.isDarkMode ? '#E2E8F0' : 'inherit'
+        }"
+      >
         <option value="">All Categories</option>
-        <option v-for="category in allCategories" :key="category" :value="category">
+        <option 
+          v-for="category in allCategories" 
+          :key="category" 
+          :value="category"
+        >
           {{ category }}
         </option>
       </select>
@@ -31,7 +63,10 @@
         <div
           v-for="(post, index) in filteredPosts"
           :key="index"
-          class="min-w-[320px] max-w-xs bg-white rounded-xl shadow-lg p-4 snap-start flex-shrink-0 transition-all duration-300 hover:scale-105"
+          class="min-w-[320px] max-w-xs rounded-xl shadow-lg p-4 snap-start flex-shrink-0 transition-all duration-300 hover:scale-105"
+          :style="{
+            backgroundColor: themeStore.isDarkMode ? '#1E1E1E' : 'white'
+          }"
           data-aos="fade-up"
         >
           <img
@@ -39,18 +74,37 @@
             :alt="post.title"
             class="w-full h-40 object-cover rounded-md mb-4"
           />
-          <h2 class="text-lg font-bold text-[#E85D04] mb-2">{{ post.title }}</h2>
-          <p class="text-sm text-gray-700 mb-3">{{ post.excerpt }}</p>
+          <h2 
+            class="text-lg font-bold mb-2"
+            :style="{
+              color: themeStore.isDarkMode ? '#FF7E33' : '#E85D04'
+            }"
+          >{{ post.title }}</h2>
+          <p 
+            class="text-sm mb-3"
+            :style="{
+              color: themeStore.isDarkMode ? '#D1D5DB' : '#4B5563'
+            }"
+          >{{ post.excerpt }}</p>
           <router-link
             :to="post.link"
-            class="text-sm text-[#E85D04] font-semibold hover:underline"
+            class="text-sm font-semibold hover:underline"
+            :style="{
+              color: themeStore.isDarkMode ? '#FF7E33' : '#E85D04'
+            }"
           >
             Read More →
           </router-link>
         </div>
       </div>
 
-      <div v-else class="text-center text-gray-500 py-16">
+      <div 
+        v-else 
+        class="text-center py-16"
+        :style="{
+          color: themeStore.isDarkMode ? '#9CA3AF' : '#6B7280'
+        }"
+      >
         <p>No blog posts found.</p>
       </div>
     </section>
@@ -59,6 +113,9 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
+import { useThemeStore } from '../stores/ThemeStore';
+
+const themeStore = useThemeStore();
 
 type BlogPost = {
   title: string
@@ -125,7 +182,7 @@ section::-webkit-scrollbar {
   height: 14px;
 }
 section::-webkit-scrollbar-thumb {
-  background: #d0008e;
+  background: v-bind(themeStore.isDarkMode ? '#FF4DC1' : '#d0008e');
   border-radius: 8px;
 }
 section::-webkit-scrollbar-track {

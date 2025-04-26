@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="transition-colors duration-300 dark:bg-gray-900 dark:text-gray-100">
     <!-- Sticky NavBar -->
     <NavBar />
 
@@ -16,7 +16,7 @@
     <button
       v-show="showScrollTop"
       @click="scrollToTop"
-      class="fixed bottom-6 left-6 bg-[#E85D04] hover:bg-[#D0008E] text-white p-3 rounded-full shadow-lg transition z-50 text-xl font-bold"
+      class="fixed bottom-6 left-6 bg-[#E85D04] hover:bg-[#D0008E] dark:bg-[#FF7E33] dark:hover:bg-[#FF4DC1] text-white p-3 rounded-full shadow-lg transition z-50 text-xl font-bold"
     >
       ↑
     </button>
@@ -29,8 +29,12 @@ import { useRoute } from 'vue-router';
 import NavBar from './components/layout/NavBar.vue';
 import Footer from './components/layout/Footer.vue';
 import CTASection from './components/sections/CTASection.vue';
+import { useThemeStore } from './stores/ThemeStore';
+
+const isDevelopment = process.env.NODE_ENV === 'development';
 
 const route = useRoute();
+const themeStore = useThemeStore();
 
 const showScrollTop = ref(false);
 const showCTA = ref(true);
@@ -40,6 +44,10 @@ const excludedPaths = ['/contact'];
 
 // Handle scroll-to-top visibility + typewriter reset
 onMounted(() => {
+  // Initialize theme
+  themeStore.initTheme();
+  console.log('Theme initialized in App.vue');
+  
   window.addEventListener('scroll', () => {
     const scrollTop = window.scrollY;
     showScrollTop.value = scrollTop > 100;
@@ -68,7 +76,23 @@ function scrollToTop() {
 
 <style>
 /* Optional: smoother appearance */
-button[ v-cloak ] {
+button[v-cloak] {
   display: none;
+}
+
+/* Force Tailwind dark mode to work by adding !important */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: var(--background-color) !important;
+  color: white !important;
+}
+
+/* Transition for all elements */
+* {
+  transition-property: color, background-color, border-color;
+  transition-duration: 300ms;
 }
 </style>

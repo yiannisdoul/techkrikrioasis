@@ -3,7 +3,12 @@
     <div class="max-w-7xl mx-auto w-full">
 
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12">
+        <h2 
+          class="text-2xl sm:text-3xl font-bold text-center mb-12"
+          :style="{
+            color: themeStore.isDarkMode ? '#FFFFFF' : '#1A1A1A'
+          }"
+        >
           Why Choose Us
         </h2>
 
@@ -11,16 +16,35 @@
           <div
             v-for="(item, index) in features"
             :key="index"
-            class="bg-[#FDF8F3] rounded-lg p-4 sm:p-5 md:p-6 text-center shadow-sm card-hover transition-transform"
+            class="rounded-lg p-4 sm:p-5 md:p-6 text-center shadow-sm card-hover transition-transform"
+            :style="{
+              backgroundColor: themeStore.isDarkMode ? '#1E1E1E' : '#FDF8F3'
+            }"
             :data-aos="index % 2 === 0 ? 'fade-left' : 'fade-right'"
             :data-aos-delay="index * 100"
             data-aos-duration="800"
           >
-            <img :src="item.icon" class="h-12 w-12 mx-auto mb-4" />
-            <h3 class="text-[#E85D04] font-bold text-base sm:text-lg mb-2">
+            <img 
+              :src="item.icon" 
+              class="h-12 w-12 mx-auto mb-4" 
+              :style="{
+                filter: themeStore.isDarkMode ? 'brightness(1.1)' : 'none'
+              }"
+            />
+            <h3 
+              class="font-bold text-base sm:text-lg mb-2"
+              :style="{
+                color: themeStore.isDarkMode ? '#FF7E33' : '#E85D04'
+              }"
+            >
               {{ item.title }}
             </h3>
-            <p class="text-gray-600 text-sm sm:text-base">
+            <p 
+              class="text-sm sm:text-base"
+              :style="{
+                color: themeStore.isDarkMode ? '#D1D5DB' : '#4B5563'
+              }"
+            >
               {{ item.text }}
             </p>
           </div>
@@ -33,6 +57,9 @@
 </template>
 
 <script setup lang="ts">
+import { useThemeStore } from '../../stores/ThemeStore';
+
+const themeStore = useThemeStore();
 
 const features = [
   { title: 'Human-Centric Design', text: 'We focus on intuitive UI/UX that makes your users stick and stay.', icon: 'https://assets.techkrikrioasis.com.au/icons/human-centric.webp' },

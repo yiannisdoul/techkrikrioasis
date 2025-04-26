@@ -1,5 +1,11 @@
 <template>
-  <div class="bg-[#fff8f1] min-h-screen pt-8 px-4 sm:px-6 md:px-10 text-[#1A1A1A]">
+  <div 
+    class="min-h-screen pt-8 px-4 sm:px-6 md:px-10 transition-colors duration-300"
+    :style="{
+      backgroundColor: themeStore.isDarkMode ? '#121212' : '#fff8f1',
+      color: themeStore.isDarkMode ? '#F5F5F5' : '#1A1A1A'
+    }"
+  >
     <div class="max-w-7xl mx-auto w-full">
       <HeroSection />
       <ServicesSection />
@@ -10,10 +16,13 @@
 </template>
 
 <script setup lang="ts">
+import { useThemeStore } from '../stores/ThemeStore';
 import HeroSection from '../components/sections/HeroSection.vue';
 import ServicesSection from '../components/services/ServicesSection.vue';
 import WhyUsSection from '../components/sections/WhyUsSection.vue';
 import TestimonialsSection from '../components/sections/TestimonialsSection.vue';
+
+const themeStore = useThemeStore();
 </script>
 
 <style scoped>

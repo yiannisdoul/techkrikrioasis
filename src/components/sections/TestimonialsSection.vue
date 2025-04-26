@@ -3,7 +3,12 @@
     <div class="max-w-7xl mx-auto w-full">
 
       <div class="max-w-6xl mx-auto">
-        <h2 class="text-2xl sm:text-3xl font-bold text-center mb-12">
+        <h2 
+          class="text-2xl sm:text-3xl font-bold text-center mb-12"
+          :style="{
+            color: themeStore.isDarkMode ? '#FFFFFF' : '#1A1A1A'
+          }"
+        >
           What Our Clients Say
         </h2>
 
@@ -11,18 +16,36 @@
           <div
             v-for="(testimonial, index) in testimonials"
             :key="index"
-            class="bg-white p-4 sm:p-5 md:p-6 rounded-lg shadow-md text-center card-hover transition-transform overflow-hidden"
+            class="p-4 sm:p-5 md:p-6 rounded-lg shadow-md text-center card-hover transition-transform overflow-hidden"
+            :style="{
+              backgroundColor: themeStore.isDarkMode ? '#1E1E1E' : 'white'
+            }"
             :data-aos="index % 2 === 0 ? 'fade-left' : 'fade-right'"
             :data-aos-delay="index * 100"
             data-aos-duration="800"
           >
-            <p class="text-gray-700 text-sm sm:text-base mb-4">
-              “{{ testimonial.text }}”
+            <p 
+              class="text-sm sm:text-base mb-4"
+              :style="{
+                color: themeStore.isDarkMode ? '#D1D5DB' : '#4B5563'
+              }"
+            >
+              "{{ testimonial.text }}"
             </p>
-            <h4 class="font-bold text-[#D0008E] text-base sm:text-lg">
+            <h4 
+              class="font-bold text-base sm:text-lg"
+              :style="{
+                color: themeStore.isDarkMode ? '#FF4DC1' : '#D0008E'
+              }"
+            >
               {{ testimonial.name }}
             </h4>
-            <p class="text-xs sm:text-sm text-gray-500">
+            <p 
+              class="text-xs sm:text-sm"
+              :style="{
+                color: themeStore.isDarkMode ? '#9CA3AF' : '#6B7280'
+              }"
+            >
               {{ testimonial.role }}
             </p>
           </div>
@@ -35,6 +58,10 @@
 </template>
 
 <script setup lang="ts">
+import { useThemeStore } from '../../stores/ThemeStore';
+
+const themeStore = useThemeStore();
+
 const testimonials = [
   { name: 'Maria P.', role: 'Startup Founder', text: 'The team made dev fast, clean, and on-brand. Loved working with TK²O!' },
   { name: 'Jason L.', role: 'Ecom Manager', text: 'We saw 3x traffic and 2x conversions post-launch.' },

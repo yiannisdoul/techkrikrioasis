@@ -51,11 +51,75 @@
   }
 }
 
+/* Enhanced dark mode support with direct DOM manipulation */
 :root {
   --background-color: #FCF7F2;
+  --text-color: #1A1A1A;
+  --navbar-bg: #FDF8F3;
+  --navbar-text: #1A1A1A;
+  --card-bg: #FFFFFF;
+  --primary-color: #E85D04;
+  --secondary-color: #D0008E;
 }
+
+html.dark {
+  --background-color: #121212;
+  --text-color: #F5F5F5;
+  --navbar-bg: #1A1A1A;
+  --navbar-text: #FFFFFF;
+  --card-bg: #1E1E1E;
+  --primary-color: #FF7E33;
+  --secondary-color: #FF4DC1;
+}
+
 body {
   background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Force dark mode for specific elements */
+html.dark .dark-navbar {
+  background-color: var(--navbar-bg) !important;
+  color: var(--navbar-text) !important;
+}
+
+html.dark .dark-text {
+  color: var(--text-color) !important;
+}
+
+html.dark .dark-primary {
+  color: var(--primary-color) !important;
+}
+
+html.dark .dark-secondary {
+  color: var(--secondary-color) !important;
+}
+
+html.dark .dark-card {
+  background-color: var(--card-bg) !important;
+}
+
+/* Force light mode for specific elements */
+html:not(.dark) .light-navbar {
+  background-color: var(--navbar-bg) !important;
+  color: var(--navbar-text) !important;
+}
+
+html:not(.dark) .light-text {
+  color: var(--text-color) !important;
+}
+
+html:not(.dark) .light-primary {
+  color: var(--primary-color) !important;
+}
+
+html:not(.dark) .light-secondary {
+  color: var(--secondary-color) !important;
+}
+
+html:not(.dark) .light-card {
+  background-color: var(--card-bg) !important;
 }
 
 /* 🔮 Custom Effects — Global Utility Classes */
@@ -66,7 +130,15 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+html.dark .bg-glass {
+  background: rgba(30, 30, 30, 0.5);
+  border: 1px solid rgba(50, 50, 50, 0.3);
+}
+
 .shadow-glow {
   box-shadow: 0 0 20px rgba(255, 94, 0, 0.2);
 }
 
+html.dark .shadow-glow {
+  box-shadow: 0 0 20px rgba(255, 94, 0, 0.4);
+}
