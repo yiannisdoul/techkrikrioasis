@@ -34,8 +34,13 @@
       </button>
     </div>
 
+    <!-- Loading spinner while projects are initializing -->
+    <div v-if="loading" class="flex justify-center py-12">
+      <LoadingSpinner size="large" text="Loading projects..." />
+    </div>
+
     <!-- Portfolio Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+    <div v-else class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
       <PortfolioCard
         v-for="(project, index) in filteredProjects"
         :key="index"
@@ -58,23 +63,24 @@
 
     <!-- Modal -->
     <PortfolioModal
-  v-if="selectedProject"
-  :isOpen="true"
-  :title="selectedProject.title"
-  :description="selectedProject.description"
-  :images="selectedProject.image"
-  :link="selectedProject.liveLink"
-  :socialLinks="selectedProject.socialLinks" 
-  @close="selectedProject = null"
-/>
+      v-if="selectedProject"
+      :isOpen="true"
+      :title="selectedProject.title"
+      :description="selectedProject.description"
+      :images="selectedProject.image"
+      :link="selectedProject.liveLink"
+      :socialLinks="selectedProject.socialLinks" 
+      @close="selectedProject = null"
+    />
 
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, onMounted  } from 'vue'
 import PortfolioCard from '../components/portfolio/PortfolioCard.vue'
 import PortfolioModal from '../components/portfolio/PortfolioModal.vue'
+import LoadingSpinner from '../components/ui/LoadingSpinner.vue'
 
 // ❗ Fixed Import (relative path like BundledServicesData)
 import { projects } from '../components/portfolio/PortfolioData'
@@ -90,6 +96,7 @@ interface Project {
 
 const selectedProject = ref<Project | null>(null)
 const selectedCategories = ref<string[]>([])
+const loading = ref(true)
 
 const tagColors: Record<string, string> = {
   'Web Development': '#D0008E',
@@ -120,4 +127,10 @@ const filteredProjects = computed(() => {
 const openModal = (project: any) => {
   selectedProject.value = project
 }
+
+onMounted(() => {
+  setTimeout(() => {
+    loading.value = false
+  }, 500)
+});
 </script>
