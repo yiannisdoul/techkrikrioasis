@@ -28,6 +28,7 @@
           <li><router-link to="/services">Services</router-link></li>
           <li><router-link to="/portfolio">Portfolio</router-link></li>
           <!-- <li><router-link to="/contact">Contact</router-link></li> -->
+          <li><router-link to="/faq">FAQ</router-link></li>
           <li><router-link to="/blog">Blog</router-link></li>
         </ul>
 
@@ -65,6 +66,7 @@
           <li><router-link to="/services" @click="closeMenu">Services</router-link></li>
           <li><router-link to="/portfolio" @click="closeMenu">Portfolio</router-link></li>
           <!-- <li><router-link to="/contact" @click="closeMenu">Contact</router-link></li> -->
+          <li><router-link to="/faq">FAQ</router-link></li>
           <li><router-link to="/blog" @click="closeMenu">Blog</router-link></li>
 
         </ul>
