@@ -9,7 +9,7 @@
         Digital Transformation
       </h1>
       <p class="text-gray-600 text-base sm:text-lg mb-6">
-        Backed by 10 years of combined sales and full-stack development experience, 
+        Backed by 15 years of combined sales and full-stack development experience, 
         we create cutting-edge websites, e-commerce platforms, and mobile apps that don’t 
         just look great—they drive results and align perfectly with your business strategy.
       </p>

@@ -29,7 +29,7 @@
           class="flex items-center gap-1 hover:underline hover:text-[#E85D04] transition"
         >
           <span>📞</span>
-          <span>+61 402 165 954</span>
+          <span>1300 421 078</span>
         </a>
       </div>
     </div>
