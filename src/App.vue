@@ -5,7 +5,7 @@
 
     <!-- Main Page Content -->
     <router-view />
-
+    <ToastContainer/>
     <!-- CTA Section shown on all pages except certain routes -->
     <CTASection v-if="showCTA" />
 
@@ -29,6 +29,7 @@ import { useRoute } from 'vue-router';
 import NavBar from './components/layout/NavBar.vue';
 import Footer from './components/layout/Footer.vue';
 import CTASection from './components/sections/CTASection.vue';
+import ToastContainer from './components/ui/toast/ToastContainer.vue'
 
 const route = useRoute();
 
